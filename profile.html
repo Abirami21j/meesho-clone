@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | Meesho Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Profile Header Banner */
+        .profile-header {
+            background: linear-gradient(135deg, #f43397, #ff76b7);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .avatar-placeholder {
+            width: 90px;
+            height: 90px;
+            background-color: #ffffff;
+            color: #f43397;
+            font-size: 32px;
+            font-weight: bold;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .profile-header h2 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .profile-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        /* Profile Details Info Section */
+        .profile-body {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #747d8c;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-bottom: 1px solid #f1f2f6;
+            padding-bottom: 5px;
+        }
+
+        .info-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .info-label {
+            color: #747d8c;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #2f3542;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .address-box {
+            background-color: #f1f2f6;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #57606f;
+            line-height: 1.4;
+        }
+
+        /* Action Buttons */
+        .edit-profile-btn {
+            width: 100%;
+            background: none;
+            border: 1px solid #f43397;
+            color: #f43397;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.2s;
+        }
+
+        .edit-profile-btn:hover {
+            background-color: #f43397;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="avatar-placeholder">JD</div>
+            <h2>John Doe</h2>
+            <p>Premium Meesho Member</p>
+        </div>
+
+        <div class="profile-body">
+            <div class="section-title">Personal Information</div>
+            
+            <div class="info-group">
+                <span class="info-label">Full Name</span>
+                <span class="info-value">John Doe</span>
+            </div>
+
+            <div class="info-group">
+                <span class="info-label">Email Address</span>
+                <span class="info-value">johndoe@example.com</span>
+            </div>
+
+            <div class="info-group">
+                <span class="info-label">Mobile Number</span>
+                <span class="info-value">+91 98765 43210</span>
+            </div>
+
+            <div class="info-group">
+                <span class="info-label">Gender</span>
+                <span class="info-value">Male</span>
+            </div>
+
+            <div class="section-title">Default Delivery Address</div>
+            <div class="address-box">
+                <strong>Home</strong><br>
+                Flat No. 405, 4th Floor, Sunshine Apartments,<br>
+                Sector 15, Connaught Place, New Delhi - 110001
+            </div>
+
+            <button class="edit-profile-btn" onclick="alert('Edit Profile mode clicked!')">
+                Edit Profile Details
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
