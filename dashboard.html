@@ -3,9 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Meesho Clone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <!-- Header -->
+    <header class="header">
+
+    <div class="logo">
+        <h2>meesho</h2>
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Try Saree, Kurti or Search by Product Code">
+    </div>
+
+    <nav class="navbar">
+        <a href="dashboard.html">Home</a>
+        <a href="categories.html"> Categories
+</a>
+         <a href="product.html"> Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="profile.html">Profile</a>
+
+    </nav>
+
+</header>
+
+    <!-- Categories -->
+   <nav class="categories" id="categories">
+        <a href="#">Women Ethnic</a>
+        <a href="#">Women Western</a>
+        <a href="#">Men</a>
+        <a href="#">Kids</a>
+        <a href="#">Home & Kitchen</a>
+        <a href="#">Beauty</a>
+        <a href="#">Jewellery</a>
+        <a href="#">Electronics</a>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <img src="https://images.meesho.com/images/marketing/1767796583251.webp" alt="Meesho Banner">
+    </section>
+
+    <!-- Features -->
+    <div class="features">
+        <span>🔄 7 Days Easy Return</span>
+        <span>💵 Cash on Delivery</span>
+        <span>🏷 Lowest Prices</span>
+    </div>
+
+    <!-- Shop Button -->
+    <div class="shop-btn">
+    <button onclick="location.href='#products'">
+        Shop Now
+    </button>
+</div>
+
+<section id="products">
+
+<h2 style="padding:20px;">Products For You</h2>
+
+<div style="display:flex; gap:20px; padding:20px; flex-wrap:wrap; justify-content:center;">
+
+<!-- Product 1 -->
+<div style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="orange.webp" style="width:100%;height:250px;">
+<h3>Rayon Women Kurti</h3>
+<h2>₹465</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+<!-- Product 2 -->
+<div style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="red kurti.webp" style="width:100%;height:250px;">
+<h3>Georgette Silk Kurti</h3>
+<h2>₹599</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+<!-- Product 3 -->
+<div style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="embroid.jpg" style="width:100%;height:250px;">
+<h3>Lavender Anarkali Kurti</h3>
+<h2>₹799</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+<!-- Product 4 -->
+<div class="product-card" style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="green.jpg" style="width:100%;height:250px;">
+<h3>Cotton A-Line Kurti</h3>
+<h2>₹549</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+</div>
+
+</section>
+
+<footer class="bottom-nav">
+
+<a href="dashboard.html" class="nav-item active">
+🏠 Home
+</a>
+
+<a href="#categories">
+📂 Categories
+</a>
+
+<a href="#products">
+🛍 Products
+</a>
+
+<a href="cart.html">
+🛒 Cart
+</a>
+
+<a href="profile.html">
+👤 Profile
+</a>
+
+</footer>
+
 </body>
 </html>
