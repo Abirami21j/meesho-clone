@@ -21,15 +21,18 @@
 
     <nav class="navbar">
         <a href="dashboard.html">Home</a>
-        <a href="product.html">Products</a>
+        <a href="categories.html"> Categories
+</a>
+         <a href="product.html"> Products</a>
         <a href="cart.html">Cart</a>
         <a href="profile.html">Profile</a>
+
     </nav>
 
 </header>
 
     <!-- Categories -->
-    <nav class="categories">
+   <nav class="categories" id="categories">
         <a href="#">Women Ethnic</a>
         <a href="#">Women Western</a>
         <a href="#">Men</a>
@@ -54,10 +57,76 @@
 
     <!-- Shop Button -->
     <div class="shop-btn">
-        <button onclick="alert('Products Section Coming Soon!')">
-            Shop Now
-        </button>
-    </div>
+    <button onclick="location.href='#products'">
+        Shop Now
+    </button>
+</div>
+
+<section id="products">
+
+<h2 style="padding:20px;">Products For You</h2>
+
+<div style="display:flex; gap:20px; padding:20px; flex-wrap:wrap; justify-content:center;">
+
+<!-- Product 1 -->
+<div style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="orange.webp" style="width:100%;height:250px;">
+<h3>Rayon Women Kurti</h3>
+<h2>₹465</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+<!-- Product 2 -->
+<div style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="red kurti.webp" style="width:100%;height:250px;">
+<h3>Georgette Silk Kurti</h3>
+<h2>₹599</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+<!-- Product 3 -->
+<div style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="embroid.jpg" style="width:100%;height:250px;">
+<h3>Lavender Anarkali Kurti</h3>
+<h2>₹799</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+<!-- Product 4 -->
+<div class="product-card" style="width:220px;background:white;border:1px solid #ddd;border-radius:8px;padding:10px;">
+<img src="green.jpg" style="width:100%;height:250px;">
+<h3>Cotton A-Line Kurti</h3>
+<h2>₹549</h2>
+<button style="width:100%;padding:10px;background:#f43397;color:white;border:none;">Add to Cart</button>
+</div>
+
+</div>
+
+</section>
+
+<footer class="bottom-nav">
+
+<a href="dashboard.html" class="nav-item active">
+🏠 Home
+</a>
+
+<a href="#categories">
+📂 Categories
+</a>
+
+<a href="#products">
+🛍 Products
+</a>
+
+<a href="cart.html">
+🛒 Cart
+</a>
+
+<a href="profile.html">
+👤 Profile
+</a>
+
+</footer>
 
 </body>
 </html>
