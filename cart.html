@@ -1,106 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Meesho – Cart</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f5f5;color:#212121;}
-header{background:#fff;border-bottom:1px solid #e0e0e0;padding:0 32px;height:60px;display:flex;align-items:center;gap:40px;}
-.logo{font-size:28px;font-weight:800;color:#4b2d8f;font-family:Georgia,serif;text-decoration:none;}
-.steps{display:flex;align-items:center;}
-.step{display:flex;flex-direction:column;align-items:center;gap:3px;}
-.circle{width:28px;height:28px;border-radius:50%;border:2px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#ccc;}
-.circle.a{border-color:#4b2d8f;color:#4b2d8f;}
-.slabel{font-size:11px;color:#ccc;}
-.slabel.a{color:#4b2d8f;font-weight:700;}
-.line{width:70px;height:2px;background:#ccc;margin-bottom:16px;}
-.wrap{max-width:960px;margin:24px auto;padding:0 16px;display:flex;gap:20px;align-items:flex-start;}
-.left{flex:1;}
-.card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;margin-bottom:14px;overflow:hidden;}
-.item{display:flex;gap:14px;padding:14px;align-items:flex-start;}
-.item img{width:80px;height:80px;object-fit:cover;border-radius:6px;flex-shrink:0;}
-.info{flex:1;}
-.title{font-size:14px;font-weight:500;margin-bottom:4px;}
-.price{font-size:15px;font-weight:700;margin-bottom:3px;}
-.meta{font-size:12px;color:#666;}
-.sold{padding:8px 14px;background:#fafafa;border-top:1px solid #e0e0e0;font-size:12px;color:#666;}
-.right{width:280px;flex-shrink:0;}
-.pcard{background:#fff;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;margin-bottom:12px;}
-.ptitle{padding:14px;font-size:15px;font-weight:700;border-bottom:1px solid #e0e0e0;}
-.pbody{padding:14px;}
-.row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;color:#666;}
-hr{border:none;border-top:1px solid #e0e0e0;margin:8px 0;}
-.total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-bottom:12px;}
-.yay{background:#e8f5ee;border-radius:6px;padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;color:#1a8a5a;font-weight:600;}
-.yay img{width:48px;height:48px;object-fit:contain;border-radius:4px;}
-.note{font-size:11px;color:#888;text-align:center;margin-bottom:10px;}
-.btn{width:100%;background:#9e0065;color:#fff;border:none;border-radius:6px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;}
-.safe{background:#f3f0fa;border-radius:8px;padding:12px;display:flex;align-items:center;gap:10px;}
-.safe img{width:48px;height:48px;object-fit:contain;}
-.badge{background:#4b2d8f;color:#fff;font-size:10px;font-weight:700;border-radius:3px;padding:2px 7px;margin-bottom:4px;display:inline-block;}
-.st{font-size:12px;font-weight:700;color:#4b2d8f;}
-.ss{font-size:11px;color:#666;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meesho Cart Page</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f1f3f6; color: #212121; padding-bottom: 20px; }
+        
+        /* Navbar Styling */
+        .header-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 30px; border-bottom: 1px solid #e0e0e0; margin-bottom: 20px; position: sticky; top: 0; z-index: 100;}
+        .logo img { height: 40px; }
+        .search-box { flex: 1; margin: 0 40px; max-width: 600px; }
+        .search-box input { width: 100%; padding: 10px 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; }
+        .navbar { display: flex; gap: 20px; }
+        .navbar a { text-decoration: none; color: #333; font-weight: 500; font-size: 15px; }
+        .navbar a:hover { color: #f43397; /* Meesho pink hover color */ }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .card { background: #fff; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .flex { display: flex; gap: 15px; align-items: flex-start; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .col-left { flex: 2.5; } .col-right { flex: 1; position: sticky; top: 90px; padding: 20px; } /* Adjusted top for sticky navbar */
+        .header { padding: 15px 20px; }
+        .btn { background: none; border: none; cursor: pointer; font-weight: 600; font-size: 15px; color: #212121; }
+        .btn:hover { color: #2874f0; }
+        .btn-outline { border: 1px solid #2874f0; color: #2874f0; padding: 8px 16px; border-radius: 4px; width: 100%; margin-top: 10px; background: #fff;}
+        .btn-fill { background: #fb641b; color: #fff; width: 100%; padding: 15px; font-size: 16px; border-radius: 2px; margin-top: 15px; border: none; font-weight: bold; }
+        .cart-item { display: flex; gap: 20px; padding: 20px; border-bottom: 1px solid #f0f0f0; }
+        .cart-item:last-child { border-bottom: none; }
+        
+        .img-box { display: block; width: 100px; height: 100px; background: #eee; object-fit: cover; flex-shrink: 0; }
+        
+        .info h3 { font-size: 16px; font-weight: 500; margin-bottom: 5px; }
+        .text-sm { font-size: 13px; color: #878787; margin-bottom: 8px; display: block;}
+        .text-green { color: #388e3c; font-weight: 500; }
+        .text-blue { color: #2874f0; font-size: 13px; font-weight: bold; margin: 8px 0;}
+        .strike { text-decoration: line-through; color: #878787; font-size: 14px; margin: 0 8px; }
+        .price { font-size: 18px; font-weight: bold; }
+        .actions { display: flex; gap: 20px; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 15px; }
+        hr { border: none; border-top: 1px dashed #e0e0e0; margin: 15px 0; }
+        .scroll-grid { display: flex; gap: 15px; overflow-x: auto; padding: 20px; }
+        .grid-card { flex: 1; min-width: 170px; border: 1px solid #eee; padding: 15px; text-align: center; border-radius: 4px; }
+        
+        .grid-card img { display: block; width: 100%; height: 130px; background: #eee; object-fit: cover; margin-bottom: 10px; }
+        
+        .grid-card h4 { font-size: 14px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 8px; }
+        @media (max-width: 768px) { 
+            .flex { flex-direction: column; } 
+            .col-right { width: 100%; position: static; } 
+            .header-bar { flex-direction: column; gap: 15px; }
+            .search-box { margin: 0; width: 100%; }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <a class="logo" href="#">meesho</a>
-  <div class="steps">
-    <div class="step"><div class="circle a">1</div><div class="slabel a">Cart</div></div>
-    <div class="line"></div>
-    <div class="step"><div class="circle">2</div><div class="slabel">Address</div></div>
-    <div class="line"></div>
-    <div class="step"><div class="circle">3</div><div class="slabel">Payment</div></div>
-    <div class="line"></div>
-    <div class="step"><div class="circle">4</div><div class="slabel">Summary</div></div>
-  </div>
-</header>
-<div class="wrap">
-  <div class="left">
-    <div style="font-size:17px;font-weight:700;margin-bottom:14px;">Product Details</div>
-    <div class="card">
-      <div class="item">
-        <img src="images/Screenshot 2026-06-28 110905.png" alt="Bag">
-        <div class="info"><div class="title">Cropout Trendy School Bag Black Waterproof Travel...</div><div class="price">&#8377;274</div><div class="meta">Size: Free Size &bull; Qty: 1</div></div>
-      </div>
-      <div class="sold">Sold by: ZOBEX</div>
+
+<div class="header-bar">
+    <div class="logo">
+        <a href="index.html"><img src="images/m1.png" alt="Meesho Logo"></a>
     </div>
-    <div class="card">
-      <div class="item">
-        <img src="images/Screenshot 2026-06-28 110911.png" alt="Speaker">
-        <div class="info"><div class="title">Wireless Bluetooth Speaker Model TG-113 (Black...</div><div class="price">&#8377;390</div><div class="meta">Size: Free Size &bull; Qty: 1</div></div>
-      </div>
-      <div class="sold">Sold by: Anandani Fashion</div>
+    
+    <div class="search-box">
+        <input type="text" placeholder="Try Saree, Kurti or Search by Product Code">
     </div>
-    <div class="card">
-      <div class="item">
-        <img src="images/Screenshot 2026-06-28 110916.png" alt="Shoes">
-        <div class="info"><div class="title">Hilux Smart Sports Shoes for Men | Latest Stylish...</div><div class="price">&#8377;468</div><div class="meta">Size: IND-10 &bull; Qty: 1</div></div>
-      </div>
-      <div class="sold">Sold by: New Yuvaan Enterprises</div>
-    </div>
-  </div>
-  <div class="right">
-    <div class="pcard">
-      <div class="ptitle">Price Details (3 Items)</div>
-      <div class="pbody">
-        <div class="row"><span>Product Price</span><span>+ &#8377;1132</span></div>
-        <div class="row"><span style="color:#1a8a5a">Total Discounts</span><span style="color:#1a8a5a">&#8211; &#8377;4</span></div>
-        <hr/>
-        <div class="total"><span>Order Total</span><span>&#8377;1128</span></div>
-        <div class="yay"><img src="discount.png" alt="discount">Yay! Your total discount is &#8377;4</div>
-        <div class="note">Clicking 'Continue' will not deduct any money</div>
-        <button class="btn">Continue</button>
-      </div>
-    </div>
-    <div class="safe">
-      <img src="shield.png" alt="shield">
-      <div><div class="badge">&#x2713; Meesho Safe</div><div class="st">Your Safety, Our Priority</div><div class="ss">Your package is safe at every point of contact.</div></div>
-    </div>
-  </div>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="product.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="profile.html">Profile</a>
+    </nav>
 </div>
+
+<div class="container">
+    <div class="flex">
+        <div class="col-left">
+            <div class="card header flex-between">
+                <p>Deliver to: <strong>Chennai - 600001</strong></p>
+                <button class="btn btn-outline" style="width: auto; margin:0;">Change</button>
+            </div>
+
+            <div class="card">
+                <div class="cart-item">
+                    <img class="img-box" src="images/anarkali dress.png" alt="Womens Dress">
+                    <div class="info" style="width: 100%;">
+                        <h3>Women's Floral Anarkali Dress</h3><span class="text-sm">Dress Items</span>
+                        <div><span class="text-green">65% off</span><span class="strike">₹1,999</span><span class="price">₹699</span></div>
+                        <p class="text-blue">Bank Offer: ₹50 off on UPI</p>
+                        <select><option>Qty: 1</option><option>Qty: 2</option></select>
+                        <div class="actions"><button class="btn">Save for later</button><button class="btn">Remove</button></div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <img class="img-box" src="images/mens dress.png" alt="Mens Dress">
+                    <div class="info" style="width: 100%;">
+                        <h3>Men's Slim Fit Cotton Shirt</h3><span class="text-sm">Mens Dress</span>
+                        <div><span class="text-green">50% off</span><span class="strike">₹999</span><span class="price">₹499</span></div>
+                        <p class="text-blue">Bank Offer: 10% HDFC Discount</p>
+                        <select><option>Qty: 2</option></select>
+                        <div class="actions"><button class="btn">Save for later</button><button class="btn">Remove</button></div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <img class="img-box" src="images/airpods.png" alt="Electronics">
+                    <div class="info" style="width: 100%;">
+                        <h3>Wireless Bluetooth Earbuds Pro</h3><span class="text-sm">Electronic Item</span>
+                        <div><span class="text-green">75% off</span><span class="strike">₹3,999</span><span class="price">₹999</span></div>
+                        <p class="text-blue">Offer: Extra 5% off on Prepaid</p>
+                        <select><option>Qty: 1</option></select>
+                        <div class="actions"><button class="btn">Save for later</button><button class="btn">Remove</button></div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <img class="img-box" src="images/watch image .png" alt="Watch">
+                    <div class="info" style="width: 100%;">
+                        <h3>Luxury Analog Men's Watch</h3><span class="text-sm">Watches</span>
+                        <div><span class="text-green">80% off</span><span class="strike">₹2,500</span><span class="price">₹500</span></div>
+                        <p class="text-blue">Bank Offer: Flat ₹100 Cashback</p>
+                        <select><option>Qty: 1</option></select>
+                        <div class="actions"><button class="btn">Save for later</button><button class="btn">Remove</button></div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <img class="img-box" src="images/kids dress .png" alt="Kids Dress">
+                    <div class="info" style="width: 100%;">
+                        <h3>Kids Party Wear Frock</h3><span class="text-sm">Dress Items</span>
+                        <div><span class="text-green">40% off</span><span class="strike">₹800</span><span class="price">₹480</span></div>
+                        <p class="text-blue">Offer: Free Delivery</p>
+                        <select><option>Qty: 1</option></select>
+                        <div class="actions"><button class="btn">Save for later</button><button class="btn">Remove</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-right card">
+            <h3 class="text-sm" style="text-transform: uppercase;">Price Details</h3><hr>
+            <div class="price-row"><span>Price (6 items)</span><span>₹10,297</span></div>
+            <div class="price-row"><span>Discount</span><span class="text-green">- ₹7,120</span></div>
+            <div class="price-row"><span>Platform Fees</span><span>₹9</span></div>
+            <div class="price-row"><span>Delivery Charges</span><span class="text-green">Free</span></div><hr>
+            <div class="price-row price"><span>Total Amount</span><span>₹3,186</span></div><hr>
+            <p class="text-green" style="margin-bottom:15px">You will save ₹7,120 on this order</p>
+            <p class="text-sm">Safe & secure payments. 100% Authentic products.</p>
+            <button class="btn-fill">Place Order</button>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 5px;">
+        <h2 style="padding: 20px 20px 0;">Fancy Things (Recently Viewed)</h2>
+        <div class="scroll-grid">
+            <div class="grid-card"><img src="images/light.png" alt="Fancy 1"><h4>Crystal Chandelier</h4><span class="price">₹2,499</span> <span class="strike">₹5,000</span><p class="text-green">50% off</p><button class="btn-outline">Add to cart</button></div>
+            <div class="grid-card"><img src="images/handbag.png" alt="Fancy 2"><h4>Designer Leather Handbag</h4><span class="price">₹1,299</span> <span class="strike">₹3,999</span><p class="text-green">67% off</p><button class="btn-outline">Add to cart</button></div>
+            <div class="grid-card"><img src="images/neckless.png" alt="Fancy 3"><h4>Gold Plated Necklace Set</h4><p style="color:red; margin-top:10px; font-size:14px;">Currently unavailable</p></div>
+            <div class="grid-card"><img src="images/specs.png" alt="Fancy 4"><h4>Vintage Aviator Sunglasses</h4><span class="price">₹499</span> <span class="strike">₹1,500</span><p class="text-green">66% off</p><button class="btn-outline">Add to cart</button></div>
+            <div class="grid-card"><img src="images/diamond earings.png" alt="Fancy 5"><h4>Diamond Stud Earrings</h4><span class="price">₹3,999</span> <span class="strike">₹8,000</span><p class="text-green">50% off</p><button class="btn-outline">Add to cart</button></div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
