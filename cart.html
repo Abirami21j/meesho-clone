@@ -1,0 +1,108 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Meesho – Cart</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f5f5;color:#212121;}
+header{background:#fff;border-bottom:1px solid #e0e0e0;padding:0 32px;height:60px;display:flex;align-items:center;gap:40px;}
+.logo{font-size:28px;font-weight:800;color:#4b2d8f;font-family:Georgia,serif;text-decoration:none;}
+.steps{display:flex;align-items:center;}
+.step{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.circle{width:28px;height:28px;border-radius:50%;border:2px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#ccc;}
+.circle.a{border-color:#4b2d8f;color:#4b2d8f;}
+.slabel{font-size:11px;color:#ccc;}
+.slabel.a{color:#4b2d8f;font-weight:700;}
+.line{width:70px;height:2px;background:#ccc;margin-bottom:16px;}
+.wrap{max-width:960px;margin:24px auto;padding:0 16px;display:flex;gap:20px;align-items:flex-start;}
+.left{flex:1;}
+.card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;margin-bottom:14px;overflow:hidden;}
+.item{display:flex;gap:14px;padding:14px;align-items:flex-start;}
+.item img{width:80px;height:80px;object-fit:cover;border-radius:6px;flex-shrink:0;}
+.info{flex:1;}
+.title{font-size:14px;font-weight:500;margin-bottom:4px;}
+.price{font-size:15px;font-weight:700;margin-bottom:3px;}
+.meta{font-size:12px;color:#666;}
+.sold{padding:8px 14px;background:#fafafa;border-top:1px solid #e0e0e0;font-size:12px;color:#666;}
+.right{width:280px;flex-shrink:0;}
+.pcard{background:#fff;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;margin-bottom:12px;}
+.ptitle{padding:14px;font-size:15px;font-weight:700;border-bottom:1px solid #e0e0e0;}
+.pbody{padding:14px;}
+.row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;color:#666;}
+hr{border:none;border-top:1px solid #e0e0e0;margin:8px 0;}
+.total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-bottom:12px;}
+.yay{background:#e8f5ee;border-radius:6px;padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;color:#1a8a5a;font-weight:600;}
+.yay img{width:48px;height:48px;object-fit:contain;border-radius:4px;}
+.note{font-size:11px;color:#888;text-align:center;margin-bottom:10px;}
+.btn{width:100%;background:#9e0065;color:#fff;border:none;border-radius:6px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;}
+.safe{background:#f3f0fa;border-radius:8px;padding:12px;display:flex;align-items:center;gap:10px;}
+.safe img{width:48px;height:48px;object-fit:contain;}
+.badge{background:#4b2d8f;color:#fff;font-size:10px;font-weight:700;border-radius:3px;padding:2px 7px;margin-bottom:4px;display:inline-block;}
+.st{font-size:12px;font-weight:700;color:#4b2d8f;}
+.ss{font-size:11px;color:#666;}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#">meesho</a>
+  <div class="steps">
+    <div class="step"><div class="circle a">1</div><div class="slabel a">Cart</div></div>
+    <div class="line"></div>
+    <div class="step"><div class="circle">2</div><div class="slabel">Address</div></div>
+    <div class="line"></div>
+    <div class="step"><div class="circle">3</div><div class="slabel">Payment</div></div>
+    <div class="line"></div>
+    <div class="step"><div class="circle">4</div><div class="slabel">Summary</div></div>
+  </div>
+</header>
+<div class="wrap">
+  <div class="left">
+    <div style="font-size:17px;font-weight:700;margin-bottom:14px;">Product Details</div>
+    <div class="card">
+      <div class="item">
+        <img src="images/Screenshot 2026-06-28 110905.png" alt="Bag">
+        <div class="info"><div class="title">Cropout Trendy School Bag Black Waterproof Travel...</div><div class="price">&#8377;274</div><div class="meta">Size: Free Size &bull; Qty: 1</div></div>
+      </div>
+      <div class="sold">Sold by: ZOBEX</div>
+    </div>
+    <div class="card">
+      <div class="item">
+        <img src="images/Screenshot 2026-06-28 110911.png" alt="Speaker">
+        <div class="info"><div class="title">Wireless Bluetooth Speaker Model TG-113 (Black...</div><div class="price">&#8377;390</div><div class="meta">Size: Free Size &bull; Qty: 1</div></div>
+      </div>
+      <div class="sold">Sold by: Anandani Fashion</div>
+    </div>
+    <div class="card">
+      <div class="item">
+        <img src="images/Screenshot 2026-06-28 110916.png" alt="Shoes">
+        <div class="info"><div class="title">Hilux Smart Sports Shoes for Men | Latest Stylish...</div><div class="price">&#8377;468</div><div class="meta">Size: IND-10 &bull; Qty: 1</div></div>
+      </div>
+      <div class="sold">Sold by: New Yuvaan Enterprises</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="pcard">
+      <div class="ptitle">Price Details (3 Items)</div>
+      <div class="pbody">
+        <div class="row"><span>Product Price</span><span>+ &#8377;1132</span></div>
+        <div class="row"><span style="color:#1a8a5a">Total Discounts</span><span style="color:#1a8a5a">&#8211; &#8377;4</span></div>
+        <hr/>
+        <div class="total"><span>Order Total</span><span>&#8377;1128</span></div>
+        <div class="yay"><img src="discount.png" alt="discount">Yay! Your total discount is &#8377;4</div>
+        <div class="note">Clicking 'Continue' will not deduct any money</div>
+        <button class="btn">Continue</button>
+      </div>
+    </div>
+    <div class="safe">
+      <img src="shield.png" alt="shield">
+      <div><div class="badge">&#x2713; Meesho Safe</div><div class="st">Your Safety, Our Priority</div><div class="ss">Your package is safe at every point of contact.</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+=======
+>>>>>>> origin/main
