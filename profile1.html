@@ -64,7 +64,16 @@ nav{background:var(--w);border-bottom:1px solid var(--bd);height:52px;padding:0 
 .witem{border-radius:10px;overflow:hidden;border:1px solid var(--bd);background:#fff}
 .wimg{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
 .winfo{padding:7px 8px}
-.wname{font-size:10px;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wname{
+    font-size:10px;
+    font-weight:500;
+    line-height:1.3;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    line-clamp:2;      /* Standard property */
+    overflow:hidden;
+}
 .wprice{font-size:11px;font-weight:700;margin-top:3px}
 .wadd{display:block;width:100%;background:var(--pink);color:#fff;border:none;border-radius:0 0 10px 10px;padding:6px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;cursor:pointer;margin-top:4px}
 .slist{display:flex;flex-direction:column}
