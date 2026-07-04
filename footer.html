@@ -74,7 +74,7 @@ body{
 <!-- Bottom Navigation -->
 <div class="bottom-nav">
 
-    <a href="dashboard.html" class="nav-item active">
+    <a href="index.html" class="nav-item active">
         <span>🏠</span>
         <p>Home</p>
     </a>
@@ -84,22 +84,48 @@ body{
         <p>Categories</p>
     </a>
 
-    <a href="products.html" class="nav-item">
+    <a href="product.html" class="nav-item">
         <span>🛍️</span>
-        <p>products</p>
+        <p>Products</p>
     </a>
 
     <a href="cart.html" class="nav-item">
         <span>🛒</span>
-        <p>cart</p>
+        <p>Cart</p>
     </a>
 
     <a href="profile.html" class="nav-item">
         <span>👤</span>
-        <p>profile</p>
+        <p>Profile</p>
     </a>
 
 </div>
+
+<!-- JavaScript -->
+<script>
+    // Select all navigation items
+    const navItems = document.querySelectorAll(".nav-item");
+
+    // Get current page name
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    // Highlight current page automatically
+    navItems.forEach(item => {
+        if (item.getAttribute("href") === currentPage) {
+            item.classList.add("active");
+        } else {
+            item.classList.remove("active");
+        }
+    });
+
+    // Change active item when clicked
+    navItems.forEach(item => {
+        item.addEventListener("click", function () {
+            navItems.forEach(nav => nav.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+</script>
 
 </body>
 </html>
