@@ -102,5 +102,31 @@ body{
 
 </div>
 
+<!-- JavaScript -->
+<script>
+    // Select all navigation items
+    const navItems = document.querySelectorAll(".nav-item");
+
+    // Get current page name
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    // Highlight current page automatically
+    navItems.forEach(item => {
+        if (item.getAttribute("href") === currentPage) {
+            item.classList.add("active");
+        } else {
+            item.classList.remove("active");
+        }
+    });
+
+    // Change active item when clicked
+    navItems.forEach(item => {
+        item.addEventListener("click", function () {
+            navItems.forEach(nav => nav.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+</script>
+
 </body>
 </html>
