@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+     
     <!-- Header -->
     <header class="header">
 
@@ -44,37 +44,96 @@
     </nav>
 
     <!-- Banner -->
-    <section class="banner">
-        <img src="https://images.meesho.com/images/marketing/1767796583251.webp" alt="Meesho Banner">
-    </section>
+   <!-- Main Meesho Banner -->
+<section class="banner">
+    <img src="https://images.meesho.com/images/marketing/1782978181486.webp"
+         alt="Meesho Banner">
+         <div class="offer-content">
+        <button id="shopBtn">Shop Now</button>
+    </div>
+</section>
 
-    <!-- Features -->
-    <div class="features">
-        <span>🔄 7 Days Easy Return</span>
-        <span>💵 Cash on Delivery</span>
-        <span>🏷 Lowest Prices</span>
+<!-- Features -->
+<div class="features">
+    <span>🔄 7 Days Easy Return</span>
+    <span>💵 Cash on Delivery</span>
+    <span>🏷 Lowest Prices</span>
+</div>
+
+
+<section class="category-section">
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634654837.webp" alt="">
+        <p>Ethnic Wear</p>
     </div>
 
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634725496.webp" alt="">
+        <p>Western Dresses</p>
+    </div>
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634780426.webp" alt="">
+        <p>Menswear</p>
+    </div>
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634814643.webp" alt="">
+        <p>Footwear</p>
+    </div>
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634835018.webp" alt="">
+        <p>Home Decor</p>
+    </div>
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634871107.webp" alt="">
+        <p>Beauty</p>
+    </div>
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634909968.webp" alt="">
+        <p>Accessories</p>
+    </div>
+
+    <div class="category-card">
+        <img src="https://images.meesho.com/images/marketing/1744634937295.webp" alt="">
+        <p>Grocery</p>
+    </div>
+
+</section>
+
+<!-- Auto Changing Offer Banner -->
+<section class="offer-banner">
+
+    <img src="https://images.meesho.com/images/marketing/1744698265981.webp"
+         alt="Offer Banner">
+         <div class="offer-content">
+        <button id="shopBtn">Shop Now</button>
+    </div>
+    
+
+</section>
+</section>
+
+    <!-- Features -->
+    
+<!-- Shop By Category -->
+
     <!-- Shop Button -->
-    <div class="shop-btn">
-    <button onclick="location.href='#products'">
-        Shop Now
-    </button>
-</div>
+    
 
 <section id="products">
 
-<h2 style="padding:20px;">Products For You</h2>
+<h2 class="product-title">
+    Products For You
+</h2>
 
  <!-- PRODUCTS SECTION -->
    <!-- PRODUCTS SECTION -->
-<div style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    padding:20px;
-    justify-content:center;
-">
+<div class="products-container">
 
 
 
@@ -265,14 +324,47 @@
 
 
 </div>
-<div class="shop-btn">
-    <button onclick="location.href='product.html'">
-        View More
-    </button>
+<div class="viewMore">
+
+<button id="viewMore">
+    View More
+</button>
+
 </div>
 
 </section>
+<!-- Add this at the end of your webpage -->
+<section class="about-section">
+  <div class="container">
+    <h2 class="about-title">More About MyStore</h2>
+    <hr class="divider">
 
+    <h3>Discover a World of Affordable Products & Everyday Essentials</h3>
+    <p>
+      Upgrade your lifestyle with the latest trends and essentials at prices designed for everyday value. 
+      MyStore offers a vast selection of products across all categories, ensuring you find everything you need at prices suited for your budget.
+    </p>
+
+    <h3>Shop Millions of Products Across All Categories</h3>
+    <p>
+      From trendy fashion to essential homeware, MyStore is your one-stop shop for everything you need. 
+      Explore millions of products across a wide variety of categories for every occasion.
+    </p>
+
+    <h3>Latest Fashion Is Right Here</h3>
+    <h4>Western Wear</h4>
+    <p>
+      Looking to revamp your wardrobe? Find trendy dresses, casual jeans, and comfortable tops suitable for any occasion. 
+      Fresh styles added regularly so you stay on top of your fashion game.
+    </p>
+
+    <h4>Accessories & Footwear</h4>
+    <p>
+      Elevate your outfit with jewelry, handbags, belts, and footwear. 
+      Whether you're searching for statement earrings or comfortable sneakers, you'll find a wide selection to suit your style.
+    </p>
+  </div>
+</section>
 <footer class="bottom-nav">
 
 <a href="dashboard.html" class="nav-item active">
@@ -296,6 +388,6 @@
 </a>
 
 </footer>
-
+<script src="script.js"></script>
 </body>
-</htm
+</html>
