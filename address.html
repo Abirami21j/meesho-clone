@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address - Meesho</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, Arial, sans-serif; }
+        body { background-color: #f1f3f6; color: #212121; }
+        
+        .header-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 5%; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100;}
+        .logo img { height: 40px; }
+        .steps { display: flex; gap: 30px; font-weight: 500; color: #878787; font-size: 14px; }
+        .steps span.active { color: #f43397; border-bottom: 2px solid #f43397; padding-bottom: 18px; margin-bottom: -18px; }
+
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; display: flex; gap: 20px; align-items: flex-start; }
+        .col-left { flex: 2; }
+        .col-right { flex: 1; position: sticky; top: 90px; }
+        
+        .title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .title-row h2 { font-size: 18px; font-weight: bold; }
+        .add-new { color: #f43397; font-weight: bold; font-size: 14px; text-decoration: none; cursor: pointer; }
+
+        .address-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; margin-bottom: 15px; display: flex; gap: 15px; }
+        .address-card.selected { background: #f4f4f5; border-color: #f4f4f5; }
+        .address-card input[type="radio"] { accent-color: #f43397; width: 18px; height: 18px; cursor: pointer; margin-top: 2px;}
+        
+        .address-info { flex: 1; }
+        .name-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .name-row h3 { font-size: 16px; font-weight: bold; }
+        .edit-btn { color: #f43397; font-size: 13px; font-weight: bold; text-transform: uppercase; cursor: pointer; border: none; background: none; }
+        
+        .address-text { font-size: 14px; color: #666; line-height: 1.5; margin-bottom: 10px; }
+        .phone { font-size: 14px; color: #666; }
+        
+        .tag { background: #ffe4c4; color: #ed6c02; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 10px; margin-left: 10px; }
+
+        .btn-deliver { background: #f43397; color: #fff; width: 100%; padding: 14px; font-size: 15px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        .btn-deliver:hover { background: #e02885; }
+
+        /* Price Details Sidebar */
+        .price-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; }
+        .price-card h3 { font-size: 16px; margin-bottom: 15px; color: #333; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #666; }
+        .row.total { font-weight: bold; font-size: 16px; color: #333; margin-top: 15px; border-top: 1px dashed #eaeaec; padding-top: 15px; }
+        .text-green { color: #038d63; }
+        .discount-badge { background: #e6f6f1; color: #038d63; padding: 10px; border-radius: 4px; font-size: 13px; font-weight: 500; text-align: center; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 5px;}
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .col-left, .col-right { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-bar">
+    <div class="logo">
+        <a href="index.html"><img src="images/m1.png" alt="Meesho Logo"></a>
+    </div>
+    <div class="steps">
+        <span>Cart</span>
+        <span class="active">Address</span>
+        <span>Payment</span>
+        <span>Summary</span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-left">
+        <div class="title-row">
+            <h2>Select Delivery Address</h2>
+            <span class="add-new">+ ADD NEW ADDRESS</span>
+        </div>
+
+        <div class="address-card">
+            <input type="radio" name="address">
+            <div class="address-info">
+                <div class="name-row">
+                    <h3>John Doe</h3>
+                </div>
+                <p class="address-text">123 Demo Street, Near Test Park, Fake City, DL, 100001</p>
+                <p class="phone">9876543210</p>
+            </div>
+        </div>
+
+        <div class="address-card selected">
+            <input type="radio" name="address" checked>
+            <div class="address-info">
+                <div class="name-row">
+                    <h3>Jane Smith <span class="tag">Unserviceable</span></h3>
+                    <button class="edit-btn">EDIT</button>
+                </div>
+                <p class="address-text">456 Mockingbird Lane, Building B, Testville, TS, 200002</p>
+                <p class="phone">9988776655</p>
+                
+                <button class="btn-deliver" onclick="window.location.href='payment.html'">Deliver to this Address</button>
+            </div>
+        </div>
+
+        <div class="address-card">
+            <input type="radio" name="address">
+            <div class="address-info">
+                <div class="name-row">
+                    <h3>Alex Johnson</h3>
+                </div>
+                <p class="address-text">789 Placeholder Avenue, Example Town, EX, 300003</p>
+                <p class="phone">9123456789</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-right">
+        <div class="price-card">
+            <h3>Price Details (11 Items)</h3>
+            <div class="row">
+                <span>Product Price</span>
+                <span>+ ₹3126</span>
+            </div>
+            <div class="row text-green">
+                <span>Total Discounts</span>
+                <span>- ₹124</span>
+            </div>
+            <div class="row total">
+                <span>Order Total</span>
+                <span>₹3002</span>
+            </div>
+            <div class="discount-badge">
+                <span>%</span> Yay! Your total discount is ₹124
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simple script to toggle selected class when radio is clicked
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            document.querySelectorAll('.address-card').forEach(card => card.classList.remove('selected'));
+            const card = e.target.closest('.address-card');
+            card.classList.add('selected');
+            
+            // Move the deliver button to the newly selected card
+            const deliverBtn = document.querySelector('.btn-deliver');
+            card.querySelector('.address-info').appendChild(deliverBtn);
+        });
+    });
+</script>
+
+</body>
+</html>
