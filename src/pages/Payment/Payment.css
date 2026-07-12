@@ -1,0 +1,37 @@
+.payment-page .header-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 5%; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100;}
+.payment-page .logo img { height: 40px; }
+.payment-page .steps { display: flex; gap: 30px; font-weight: 500; color: #878787; font-size: 14px; }
+.payment-page .steps span.active { color: #f43397; border-bottom: 2px solid #f43397; padding-bottom: 18px; margin-bottom: -18px; }
+.payment-page .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; display: flex; gap: 20px; align-items: flex-start; }
+.payment-page .col-left { flex: 2; }
+.payment-page .col-right { flex: 1; position: sticky; top: 90px; }
+.payment-page .title-row { margin-bottom: 15px; }
+.payment-page .title-row h2 { font-size: 18px; font-weight: bold; }
+.payment-page .payment-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.payment-page .payment-card.selected { border-color: #9f2089; background: #fff; }
+.payment-page .payment-info { display: flex; align-items: center; gap: 15px; }
+.payment-page .payment-price { font-weight: bold; font-size: 16px; min-width: 60px; }
+.payment-page .payment-name { font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+.payment-page .icon { width: 24px; height: 24px; background: #eee; border-radius: 4px; display: inline-block; }
+.payment-page .payment-card input[type="radio"] { accent-color: #9f2089; width: 18px; height: 18px; cursor: pointer; }
+.payment-page .save-badge { background: #e6f6f1; color: #038d63; font-size: 11px; padding: 2px 6px; border-radius: 2px; font-weight: bold; margin-top: 5px; display: inline-block;}
+.payment-page .extra-discount { background: #f4f4f5; padding: 10px; font-size: 12px; color: #666; margin-top: 15px; border-radius: 4px; display: flex; align-items: center; gap: 5px; margin-left: -20px; margin-right: -20px; margin-bottom: -20px; border-top: 1px solid #eaeaec; }
+.payment-page .resell-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.payment-page .resell-card h3 { font-size: 16px; margin-bottom: 5px; }
+.payment-page .resell-card p { font-size: 13px; color: #878787; }
+.payment-page .toggle-group { display: flex; border: 1px solid #eaeaec; border-radius: 20px; overflow: hidden; }
+.payment-page .toggle-btn { padding: 8px 20px; border: none; background: #fff; cursor: pointer; font-size: 14px; font-weight: 500; }
+.payment-page .toggle-btn.active { background: #fdf2fa; color: #9f2089; }
+.payment-page .price-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; }
+.payment-page .price-card h3 { font-size: 16px; margin-bottom: 15px; color: #333; }
+.payment-page .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #666; }
+.payment-page .row.total { font-weight: bold; font-size: 16px; color: #333; margin-top: 15px; border-top: 1px dashed #eaeaec; padding-top: 15px; }
+.payment-page .text-green { color: #038d63; }
+.payment-page .discount-badge { background: #e6f6f1; color: #038d63; padding: 10px; border-radius: 4px; font-size: 13px; font-weight: 500; text-align: center; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 5px;}
+.payment-page .info-text { font-size: 11px; color: #878787; text-align: center; margin-top: 20px; margin-bottom: 10px; background: #f4f4f5; padding: 8px; border-radius: 4px; }
+.payment-page .btn-continue { background: #9f2089; color: #fff; width: 100%; padding: 14px; font-size: 15px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+.payment-page .btn-continue:hover { background: #7a1869; }
+@media (max-width: 768px) {
+    .payment-page .container { flex-direction: column; }
+    .payment-page .col-left, .payment-page .col-right { width: 100%; }
+}
