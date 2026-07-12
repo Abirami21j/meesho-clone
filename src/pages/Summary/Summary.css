@@ -1,0 +1,32 @@
+.summary-page .header-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 5%; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100;}
+.summary-page .logo img { height: 40px; }
+.summary-page .steps { display: flex; gap: 30px; font-weight: 500; color: #878787; font-size: 14px; }
+.summary-page .steps span.active { color: #f43397; border-bottom: 2px solid #f43397; padding-bottom: 18px; margin-bottom: -18px; }
+.summary-page .container { max-width: 800px; margin: 40px auto; padding: 0 15px; }
+.summary-page .success-card { background: #fff; border-radius: 4px; padding: 30px; text-align: center; border: 1px solid #eaeaec; margin-bottom: 20px; }
+.summary-page .success-icon { width: 60px; height: 60px; background: #038d63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 15px; }
+.summary-page .success-card h2 { color: #038d63; font-size: 24px; margin-bottom: 10px; }
+.summary-page .success-card p { color: #666; font-size: 15px; }
+.summary-page .summary-card { background: #fff; border-radius: 4px; padding: 20px; border: 1px solid #eaeaec; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;}
+.summary-page .summary-info h3 { font-size: 16px; margin-bottom: 5px; }
+.summary-page .summary-info p { font-size: 14px; color: #666; }
+.summary-page .summary-price { font-size: 20px; font-weight: bold; color: #333; }
+.summary-page .tracking-card { background: #fff; border-radius: 4px; padding: 20px 40px; border: 1px solid #eaeaec; margin-bottom: 20px; }
+.summary-page .tracking-card h3 { font-size: 16px; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+.summary-page .timeline { display: flex; justify-content: space-between; position: relative; margin-bottom: 20px;}
+.summary-page .timeline::before { content: ''; position: absolute; top: 15px; left: 20px; right: 20px; height: 4px; background: #eaeaec; z-index: 1; }
+.summary-page .step { position: relative; z-index: 2; text-align: center; width: 80px; display: flex; flex-direction: column; align-items: center;}
+.summary-page .circle { width: 34px; height: 34px; background: #fff; border: 4px solid #eaeaec; border-radius: 50%; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; color: transparent;}
+.summary-page .step.active .circle { border-color: #038d63; background: #038d63; color: white; }
+.summary-page .step.active.current .circle { background: #fff; border-color: #038d63; }
+.summary-page .step.active.current .circle::after { content: ''; width: 14px; height: 14px; background: #038d63; border-radius: 50%; }
+.summary-page .timeline-text { font-size: 13px; color: #333; font-weight: 500;}
+.summary-page .timeline-date { font-size: 11px; color: #878787; margin-top: 4px; }
+.summary-page .btn-home { background: #f43397; color: #fff; padding: 12px 30px; font-size: 15px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; display: block; margin: 30px auto 0; text-decoration: none; text-align: center; width: 250px;}
+.summary-page .btn-home:hover { background: #e02885; }
+@media (max-width: 768px) {
+    .summary-page .timeline { flex-direction: column; gap: 30px; }
+    .summary-page .timeline::before { top: 20px; left: 15px; bottom: 20px; right: auto; width: 4px; height: auto; }
+    .summary-page .step { width: 100%; flex-direction: row; align-items: flex-start; gap: 20px; text-align: left;}
+    .summary-page .circle { margin-bottom: 0; }
+}
