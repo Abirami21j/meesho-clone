@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Meesho</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, Arial, sans-serif; }
+        body { background-color: #f1f3f6; color: #212121; }
+        
+        .header-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 5%; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100;}
+        .logo img { height: 40px; }
+        .steps { display: flex; gap: 30px; font-weight: 500; color: #878787; font-size: 14px; }
+        .steps span.active { color: #f43397; border-bottom: 2px solid #f43397; padding-bottom: 18px; margin-bottom: -18px; }
+
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; display: flex; gap: 20px; align-items: flex-start; }
+        .col-left { flex: 2; }
+        .col-right { flex: 1; position: sticky; top: 90px; }
+        
+        .title-row { margin-bottom: 15px; }
+        .title-row h2 { font-size: 18px; font-weight: bold; }
+
+        .payment-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+        .payment-card.selected { border-color: #9f2089; background: #fff; }
+        
+        .payment-info { display: flex; align-items: center; gap: 15px; }
+        .payment-price { font-weight: bold; font-size: 16px; min-width: 60px; }
+        .payment-name { font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+        .icon { width: 24px; height: 24px; background: #eee; border-radius: 4px; display: inline-block; }
+        
+        .payment-card input[type="radio"] { accent-color: #9f2089; width: 18px; height: 18px; cursor: pointer; }
+
+        .save-badge { background: #e6f6f1; color: #038d63; font-size: 11px; padding: 2px 6px; border-radius: 2px; font-weight: bold; margin-top: 5px; display: inline-block;}
+        .extra-discount { background: #f4f4f5; padding: 10px; font-size: 12px; color: #666; margin-top: 15px; border-radius: 4px; display: flex; align-items: center; gap: 5px; margin-left: -20px; margin-right: -20px; margin-bottom: -20px; border-top: 1px solid #eaeaec; }
+
+        .resell-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .resell-card h3 { font-size: 16px; margin-bottom: 5px; }
+        .resell-card p { font-size: 13px; color: #878787; }
+        .toggle-group { display: flex; border: 1px solid #eaeaec; border-radius: 20px; overflow: hidden; }
+        .toggle-btn { padding: 8px 20px; border: none; background: #fff; cursor: pointer; font-size: 14px; font-weight: 500; }
+        .toggle-btn.active { background: #fdf2fa; color: #9f2089; }
+
+        /* Price Details Sidebar */
+        .price-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; }
+        .price-card h3 { font-size: 16px; margin-bottom: 15px; color: #333; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #666; }
+        .row.total { font-weight: bold; font-size: 16px; color: #333; margin-top: 15px; border-top: 1px dashed #eaeaec; padding-top: 15px; }
+        .text-green { color: #038d63; }
+        .discount-badge { background: #e6f6f1; color: #038d63; padding: 10px; border-radius: 4px; font-size: 13px; font-weight: 500; text-align: center; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 5px;}
+        
+        .info-text { font-size: 11px; color: #878787; text-align: center; margin-top: 20px; margin-bottom: 10px; background: #f4f4f5; padding: 8px; border-radius: 4px; }
+        
+        .btn-continue { background: #9f2089; color: #fff; width: 100%; padding: 14px; font-size: 15px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+        .btn-continue:hover { background: #7a1869; }
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .col-left, .col-right { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-bar">
+    <div class="logo">
+        <a href="index.html"><img src="images/m1.png" alt="Meesho Logo"></a>
+    </div>
+    <div class="steps">
+        <span>Cart</span>
+        <span>Address</span>
+        <span class="active">Payment</span>
+        <span>Summary</span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-left">
+        <div class="title-row">
+            <h2>Select Payment Method</h2>
+        </div>
+
+        <label class="payment-card selected">
+            <div class="payment-info">
+                <span class="payment-price">₹3002</span>
+                <span class="payment-name">Cash on Delivery <span class="icon">💵</span></span>
+            </div>
+            <input type="radio" name="payment" checked>
+        </label>
+
+        <label class="payment-card" style="display: block; position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="payment-info">
+                    <div style="display: flex; flex-direction: column;">
+                        <span class="payment-price" style="text-decoration: line-through; color: #878787; font-size: 14px; font-weight: normal;">₹3002</span>
+                        <span class="payment-price text-green">₹2620</span>
+                        <span class="save-badge">Save ₹382</span>
+                    </div>
+                    <span class="payment-name" style="margin-left: 15px;">Pay Online <span class="icon">💳</span></span>
+                </div>
+                <input type="radio" name="payment">
+            </div>
+            <div class="extra-discount">
+                <span style="color: #038d63;">%</span> Extra discount with bank offers
+            </div>
+        </label>
+
+        <div class="resell-card">
+            <div>
+                <h3>Reselling the order?</h3>
+                <p>Click on 'Yes' to add Final Price</p>
+            </div>
+            <div class="toggle-group">
+                <button class="toggle-btn active">No</button>
+                <button class="toggle-btn">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-right">
+        <div class="price-card">
+            <h3>Price Details (11 Items)</h3>
+            <div class="row">
+                <span>Product Price</span>
+                <span>+ ₹3126</span>
+            </div>
+            <div class="row text-green">
+                <span>Total Discounts</span>
+                <span>- ₹124</span>
+            </div>
+            <div class="row total">
+                <span>Order Total</span>
+                <span>₹3002</span>
+            </div>
+            <div class="discount-badge">
+                <span>%</span> Yay! Your total discount is ₹124
+            </div>
+            
+            <div class="info-text">
+                Clicking on 'Continue' will not deduct any money
+            </div>
+            
+            <button class="btn-continue" onclick="window.location.href='summary.html'">Continue</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Toggle active state for payment methods
+    document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
+            e.target.closest('.payment-card').classList.add('selected');
+        });
+    });
+
+    // Toggle for Reselling order
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
