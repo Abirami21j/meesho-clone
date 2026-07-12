@@ -9,7 +9,7 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-body{
+.Home-page body {
     background:#f5f5f5;
 }
 
@@ -17,7 +17,7 @@ body{
    HEADER
 =========================== */
 
-.header{
+.Home-page .header {
     position:sticky;
     top:0;
     z-index:1000;
@@ -29,18 +29,18 @@ body{
     box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
-.logo h2{
+.Home-page .logo h2 {
     color:white;
     font-size:34px;
     font-weight:bold;
     text-transform:capitalize;
 }
 
-.search-box{
+.Home-page .search-box {
     width:40%;
 }
 
-.search-box input{
+.Home-page .search-box input {
     width:100%;
     padding:12px 18px;
     border:none;
@@ -49,12 +49,12 @@ body{
     font-size:15px;
 }
 
-.navbar{
+.Home-page .navbar {
     display:flex;
     gap:25px;
 }
 
-.navbar a{
+.Home-page .navbar a {
     color:white;
     text-decoration:none;
     font-size:17px;
@@ -62,7 +62,7 @@ body{
     transition:.3s;
 }
 
-.navbar a:hover{
+.Home-page .navbar a:hover {
     color:#ffe600;
 }
 
@@ -70,7 +70,7 @@ body{
    CATEGORY BAR
 =========================== */
 
-.categories{
+.Home-page .categories {
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
@@ -80,14 +80,14 @@ body{
     box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-.categories a{
+.Home-page .categories a {
     text-decoration:none;
     color:#444;
     font-weight:600;
     transition:.3s;
 }
 
-.categories a:hover{
+.Home-page .categories a:hover {
     color:#9c0d73;
 }
 
@@ -95,7 +95,7 @@ body{
    HERO BANNER
 =========================== */
 
-.hero-banner{
+.Home-page .hero-banner {
     width:95%;
     height:430px;
     margin:30px auto;
@@ -105,13 +105,13 @@ body{
     box-shadow:0 5px 18px rgba(0,0,0,.2);
 }
 
-.hero-banner img{
+.Home-page .hero-banner img {
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-.banner-content{
+.Home-page .banner-content {
     position:absolute;
     top:50%;
     left:60px;
@@ -119,17 +119,17 @@ body{
     color:white;
 }
 
-.banner-content h1{
+.Home-page .banner-content h1 {
     font-size:55px;
     margin-bottom:15px;
 }
 
-.banner-content p{
+.Home-page .banner-content p {
     font-size:25px;
     margin-bottom:30px;
 }
 
-#shopBtn{
+.Home-page #shopBtn {
     padding:15px 40px;
     border:none;
     background:white;
@@ -141,7 +141,7 @@ body{
     transition:.3s;
 }
 
-#shopBtn:hover{
+.Home-page #shopBtn:hover {
     background:#ffe600;
 }
 
@@ -149,7 +149,7 @@ body{
    FEATURES
 =========================== */
 
-.features{
+.Home-page .features {
     display:flex;
     justify-content:center;
     gap:50px;
@@ -164,14 +164,14 @@ body{
    PRODUCTS SECTION
 =========================== */
 
-.product-title{
+.Home-page .product-title {
     text-align:center;
     font-size:36px;
     color:#333;
     margin:40px 0 20px;
 }
 
-.products-container{
+.Home-page .products-container {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
@@ -179,7 +179,7 @@ body{
     padding:20px 40px;
 }
 
-.product-wrapper{
+.Home-page .product-wrapper {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
@@ -190,7 +190,7 @@ body{
    PRODUCT CARD
 =========================== */
 
-.product-card{
+.Home-page .product-card {
     width:260px;
     background:#fff;
     border-radius:15px;
@@ -200,44 +200,44 @@ body{
     padding:15px;
 }
 
-.product-card:hover{
+.Home-page .product-card:hover {
     transform:translateY(-8px);
     box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-.product-card img{
+.Home-page .product-card img {
     width:100%;
     height:300px;
     object-fit:cover;
     border-radius:10px;
 }
 
-.product-card h3{
+.Home-page .product-card h3 {
     font-size:19px;
     margin:15px 0 10px;
     color:#333;
     min-height:45px;
 }
 
-.price{
+.Home-page .price {
     font-size:26px;
     font-weight:bold;
     color:#9c0d73;
     margin-bottom:8px;
 }
 
-.old-price{
+.Home-page .old-price {
     color:gray;
     text-decoration:line-through;
     margin-right:10px;
 }
 
-.discount{
+.Home-page .discount {
     color:green;
     font-weight:bold;
 }
 
-.rating{
+.Home-page .rating {
     margin-top:10px;
     display:inline-block;
     background:#038d63;
@@ -248,7 +248,7 @@ body{
     font-weight:bold;
 }
 
-.reviews{
+.Home-page .reviews {
     margin-top:8px;
     color:#666;
     font-size:14px;
@@ -258,7 +258,7 @@ body{
    BUTTONS
 =========================== */
 
-.btn{
+.Home-page .btn {
     width:100%;
     padding:12px;
     border:none;
@@ -270,21 +270,21 @@ body{
     transition:.3s;
 }
 
-.add{
+.Home-page .add {
     background:#9c0d73;
     color:white;
 }
 
-.add:hover{
+.Home-page .add:hover {
     background:#7b095b;
 }
 
-.buy{
+.Home-page .buy {
     background:#ff9800;
     color:white;
 }
 
-.buy:hover{
+.Home-page .buy:hover {
     background:#e68900;
 }
 
@@ -292,14 +292,14 @@ body{
    VIEW MORE BUTTON
 =========================== */
 
-.viewMore{
+.Home-page .viewMore {
     display:flex;
     justify-content:center;
     margin:40px 0;
 }
 
-#viewMore,
-.viewMore button{
+.Home-page #viewMore,
+.viewMore button {
     padding:15px 40px;
     background:#9c0d73;
     color:white;
@@ -311,15 +311,15 @@ body{
     transition:.3s;
 }
 
-#viewMore:hover,
-.viewMore button:hover{
+.Home-page #viewMore:hover,
+.viewMore button:hover {
     background:#7b095b;
     transform:scale(1.05);
 }/* ===========================
    FOOTER
 =========================== */
 
-.bottom-nav{
+.Home-page .bottom-nav {
     display:flex;
     justify-content:space-around;
     align-items:center;
@@ -329,7 +329,7 @@ body{
     margin-top:40px;
 }
 
-.bottom-nav a{
+.Home-page .bottom-nav a {
     text-decoration:none;
     color:#555;
     font-size:17px;
@@ -337,11 +337,11 @@ body{
     transition:0.3s;
 }
 
-.bottom-nav a:hover{
+.Home-page .bottom-nav a:hover {
     color:#9c0d73;
 }
 
-.bottom-nav .active{
+.Home-page .bottom-nav .active {
     color:#9c0d73;
     font-weight:bold;
 }
@@ -367,7 +367,7 @@ body{
    SMOOTH SCROLL
 =========================== */
 
-html{
+.Home-page html {
     scroll-behavior:smooth;
 }
 
@@ -387,9 +387,9 @@ html{
     }
 }
 
-.hero-banner,
+.Home-page .hero-banner,
 .features,
-.product-card{
+.product-card {
     animation:fadeIn 0.8s ease;
 }
 
@@ -399,38 +399,38 @@ html{
 
 @media(max-width:992px){
 
-.header{
+.Home-page .header {
     flex-direction:column;
     gap:15px;
     padding:20px;
 }
 
-.search-box{
+.Home-page .search-box {
     width:90%;
 }
 
-.navbar{
+.Home-page .navbar {
     flex-wrap:wrap;
     justify-content:center;
 }
 
-.hero-banner{
+.Home-page .hero-banner {
     height:320px;
 }
 
-.banner-content{
+.Home-page .banner-content {
     left:30px;
 }
 
-.banner-content h1{
+.Home-page .banner-content h1 {
     font-size:36px;
 }
 
-.banner-content p{
+.Home-page .banner-content p {
     font-size:18px;
 }
 
-.product-card{
+.Home-page .product-card {
     width:220px;
 }
 
@@ -438,43 +438,43 @@ html{
 
 @media(max-width:768px){
 
-.categories{
+.Home-page .categories {
     gap:10px;
     padding:15px;
 }
 
-.hero-banner{
+.Home-page .hero-banner {
     height:250px;
 }
 
-.banner-content{
+.Home-page .banner-content {
     left:20px;
 }
 
-.banner-content h1{
+.Home-page .banner-content h1 {
     font-size:28px;
 }
 
-.banner-content p{
+.Home-page .banner-content p {
     font-size:16px;
 }
 
-#shopBtn{
+.Home-page #shopBtn {
     padding:12px 25px;
     font-size:16px;
 }
 
-.features{
+.Home-page .features {
     flex-direction:column;
     gap:15px;
     text-align:center;
 }
 
-.product-card{
+.Home-page .product-card {
     width:90%;
 }
 
-.bottom-nav{
+.Home-page .bottom-nav {
     flex-wrap:wrap;
     gap:15px;
 }
@@ -483,36 +483,36 @@ html{
 
 @media(max-width:480px){
 
-.logo h2{
+.Home-page .logo h2 {
     font-size:28px;
 }
 
-.search-box input{
+.Home-page .search-box input {
     font-size:14px;
 }
 
-.hero-banner{
+.Home-page .hero-banner {
     height:200px;
 }
 
-.banner-content h1{
+.Home-page .banner-content h1 {
     font-size:22px;
 }
 
-.banner-content p{
+.Home-page .banner-content p {
     font-size:14px;
 }
 
-#shopBtn{
+.Home-page #shopBtn {
     padding:10px 18px;
     font-size:14px;
 }
 
-.product-title{
+.Home-page .product-title {
     font-size:28px;
 }
 
-.product-card img{
+.Home-page .product-card img {
     height:250px;
 }
 
@@ -525,12 +525,12 @@ html{
     background:#fff;
 }
 
-.category-card{
+.Home-page .category-card {
     text-align:center;
     cursor:pointer;
 }
 
-.category-card img{
+.Home-page .category-card img {
     width:120px;
     height:120px;
     border-radius:50%;
@@ -539,29 +539,29 @@ html{
     transition:0.3s;
 }
 
-.category-card img:hover{
+.Home-page .category-card img:hover {
     transform:scale(1.08);
 }
 
-.category-card p{
+.Home-page .category-card p {
     margin-top:12px;
     font-size:18px;
     font-weight:500;
 }
-.banner,
-.offer-banner{
+.Home-page .banner,
+.offer-banner {
     width:100%;
     padding:20px;
 }
 
-.banner img,
-.offer-banner{
+.Home-page .banner img,
+.offer-banner {
     position:relative;
     width:100%;
     padding:20px;
 }
 
-.offer-banner img{
+.Home-page .offer-banner img {
     width:100%;
     height:600px;
     object-fit:cover;
@@ -569,7 +569,7 @@ html{
     display:block;
 }
 
-.offer-content{
+.Home-page .offer-content {
     position:absolute;
 
    left:1100px;       /* Move button to left */
@@ -579,7 +579,7 @@ html{
 
 }
 
-.offer-content button{
+.Home-page .offer-content button {
 
     background:#ffffff;
 
@@ -601,7 +601,7 @@ html{
 
 }
 
-.offer-content button:hover{
+.Home-page .offer-content button:hover {
 
     background:#9c0d73;
 
@@ -609,7 +609,7 @@ html{
 
 }
 
-.about-section {
+.Home-page .about-section  {
   background: #fff;
   padding: 40px 20px;
   font-family: Arial, sans-serif;
@@ -618,35 +618,36 @@ html{
   border-top: 1px solid #e0e0e0;
   margin-top: 50px;
 }
-.about-section .container {
+.Home-page .about-section .container  {
   max-width: 1100px;
   margin: 0 auto;
 }
-.about-title {
+.Home-page .about-title  {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 10px;
   color: #111;
 }
-.divider {
+.Home-page .divider  {
   border: none;
   border-top: 1px solid #ddd;
   margin-bottom: 25px;
 }
-.about-section h3 {
+.Home-page .about-section h3  {
   font-size: 18px;
   margin-top: 25px;
   margin-bottom: 10px;
   color: #222;
 }
-.about-section h4 {
+.Home-page .about-section h4  {
   font-size: 16px;
   margin-top: 15px;
   margin-bottom: 8px;
   color: #444;
 }
-.about-section p {
+.Home-page .about-section p  {
   font-size: 14px;
   color: #555;
   margin-bottom: 15px;
 }
+
