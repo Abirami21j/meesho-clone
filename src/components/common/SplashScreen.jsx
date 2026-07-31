@@ -114,6 +114,45 @@ export default function SplashScreen({
         {tagline && (
           <div className="splash-tagline">{settled && tagline}</div>
         )}
+
+        <div 
+          style={{
+            position: 'absolute',
+            bottom: '2rem',
+            textAlign: 'center',
+            color: '#f2d9e8',
+            fontSize: '0.75rem',
+            fontFamily: "'Poppins', 'Segoe UI', sans-serif",
+            opacity: 0,
+            animation: settled ? "taglineIn 1s ease-out 500ms forwards" : "none",
+            width: '100%'
+          }}
+        >
+          <div style={{ marginBottom: '12px' }}>
+            <span style={{ opacity: 0.8 }}>Developed by</span><br/>
+            <strong style={{ fontSize: '1rem', color: '#fff', letterSpacing: '1px' }}>THE BUILDERS</strong><br/>
+            <span style={{ fontStyle: 'italic', color: '#f7941d', fontSize: '0.8rem' }}>✨ "Building Ideas. Delivering Innovation."</span>
+          </div>
+
+          <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', padding: '0 20px', fontSize: '0.7rem' }}>
+            <strong style={{ opacity: 0.9 }}>Team Members:</strong>
+            <span>• Abirami J</span>
+            <span>• Jeevankumar M</span>
+            <span>• Ruthiksha C</span>
+            <span>• Jamuna S</span>
+            <span>• Naren L</span>
+          </div>
+
+          <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>
+            Developed as part of the<br/>
+            <strong style={{ color: '#fff' }}>IndiWebPros Solutions Pvt. Ltd.</strong><br/>
+            Internship Program
+          </div>
+          
+          <div className="animate-pulse" style={{ marginTop: '15px', fontSize: '0.7rem', opacity: 0.6 }}>
+            Loading...
+          </div>
+        </div>
       </div>
     </div>
   );
