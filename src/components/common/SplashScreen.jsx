@@ -23,7 +23,7 @@ export default function SplashScreen({
     { name: "Jeevankumar M", short: "Jeevankumar M" },
     { name: "Abirami J", short: "Abirami J" },
     { name: "Ruthiksha C", short: "Ruthiksha" },
-    { name: "Jamuna S", short: "Jamunasenthamarai" },
+    { name: "Jamuna S", short: "Jamuna S" },
     { name: "Naren L", short: "Naren L" },
   ];
 
