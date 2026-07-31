@@ -1,0 +1,224 @@
+/* src/components/products/ProductFilters.css */
+.product-filters-sidebar {
+    background: white;
+    border: 1px solid #eaeaec;
+    border-radius: 8px;
+    width: 280px;
+    flex-shrink: 0;
+    font-family: 'Mier book', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333333;
+    overflow: hidden;
+}
+
+.filter-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eaeaec;
+    background-color: #fafafa;
+}
+
+.filter-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: #333333;
+    letter-spacing: 0.5px;
+}
+
+.filter-header span {
+    font-size: 12px;
+    color: #8b8b97;
+    font-weight: 500;
+}
+
+.filter-section {
+    border-bottom: 1px solid #eaeaec;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-section-title {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.filter-section-title:hover {
+    background-color: #fcfcfc;
+}
+
+.filter-section-title h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.filter-section-title svg {
+    color: #8b8b97;
+    transition: transform 0.3s ease;
+}
+
+.filter-section-content {
+    padding: 0 20px 20px 20px;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eaeaec;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    background: #f9f9f9;
+    transition: border-color 0.2s ease;
+}
+
+.search-box:focus-within {
+    border-color: #df1995;
+    background: #ffffff;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    margin-left: 8px;
+    color: #333333;
+    background: transparent;
+}
+
+.search-box input::placeholder {
+    color: #8b8b97;
+}
+
+.search-icon {
+    font-size: 14px;
+    color: #8b8b97;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Checkboxes */
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar for lists */
+.checkbox-list::-webkit-scrollbar {
+    width: 4px;
+}
+.checkbox-list::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+.checkbox-list::-webkit-scrollbar-thumb {
+    background: #c9c9d1; 
+    border-radius: 4px;
+}
+.checkbox-list::-webkit-scrollbar-thumb:hover {
+    background: #8b8b97; 
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    color: #444444;
+    transition: color 0.2s ease;
+}
+
+.checkbox-label:hover {
+    color: #df1995;
+}
+
+.checkbox-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c9c9d1;
+    border-radius: 4px;
+    margin-right: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background-color: #df1995;
+    border-color: #df1995;
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-text {
+    line-height: 20px;
+    user-select: none;
+}
+
+/* Pills */
+.pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill-btn {
+    padding: 8px 16px;
+    border: 1px solid #eaeaec;
+    border-radius: 20px;
+    background: #ffffff;
+    color: #666666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pill-btn:hover {
+    border-color: #df1995;
+    color: #df1995;
+}
+
+.pill-btn.active {
+    border-color: #df1995;
+    background-color: #fce8f4;
+    color: #df1995;
+    font-weight: 600;
+}

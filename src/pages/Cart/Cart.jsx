@@ -1,76 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useCart } from '@/context/CartContext';
 import './Cart.css';
+import MainLayout from '@/layouts/MainLayout';
 
-import m1 from '../../assets/images/m1.png';
-import anarkaliDress from '../../assets/images/anarkali dress.png';
-import mensDress from '../../assets/images/mens dress.png';
-import airpods from '../../assets/images/airpods.png';
-import watchImage from '../../assets/images/watch image .png';
-import kidsDress from '../../assets/images/kids dress .png';
-import light from '../../assets/images/light.png';
-import handbag from '../../assets/images/handbag.png';
-import neckless from '../../assets/images/neckless.png';
-import specs from '../../assets/images/specs.png';
-import diamondEarings from '../../assets/images/diamond earings.png';
+import m1 from '@/assets/images/m1.png';
+import anarkaliDress from '@/assets/images/anarkali dress.png';
+import mensDress from '@/assets/images/mens dress.png';
+import airpods from '@/assets/images/airpods.png';
+import watchImage from '@/assets/images/watch image .png';
+import kidsDress from '@/assets/images/kids dress .png';
+import light from '@/assets/images/light.png';
+import handbag from '@/assets/images/handbag.png';
+import neckless from '@/assets/images/neckless.png';
+import specs from '@/assets/images/specs.png';
+import diamondEarings from '@/assets/images/diamond earings.png';
 
-const initialCartItems = [
-    {
-        id: 1,
-        title: "Women's Floral Anarkali Dress",
-        category: "Dress Items",
-        discountText: "65% off",
-        originalPrice: 1999,
-        discountedPrice: 699,
-        offerText: "Bank Offer: ₹50 off on UPI",
-        qty: 1,
-        imgSrc: anarkaliDress
-    },
-    {
-        id: 2,
-        title: "Men's Slim Fit Cotton Shirt",
-        category: "Mens Dress",
-        discountText: "50% off",
-        originalPrice: 999,
-        discountedPrice: 499,
-        offerText: "Bank Offer: 10% HDFC Discount",
-        qty: 2,
-        imgSrc: mensDress
-    },
-    {
-        id: 3,
-        title: "Wireless Bluetooth Earbuds Pro",
-        category: "Electronic Item",
-        discountText: "75% off",
-        originalPrice: 3999,
-        discountedPrice: 999,
-        offerText: "Offer: Extra 5% off on Prepaid",
-        qty: 1,
-        imgSrc: airpods
-    },
-    {
-        id: 4,
-        title: "Luxury Analog Men's Watch",
-        category: "Watches",
-        discountText: "80% off",
-        originalPrice: 2500,
-        discountedPrice: 500,
-        offerText: "Bank Offer: Flat ₹100 Cashback",
-        qty: 1,
-        imgSrc: watchImage
-    },
-    {
-        id: 5,
-        title: "Kids Party Wear Frock",
-        category: "Dress Items",
-        discountText: "40% off",
-        originalPrice: 800,
-        discountedPrice: 480,
-        offerText: "Offer: Free Delivery",
-        qty: 1,
-        imgSrc: kidsDress
-    }
-];
+// Removed static initialCartItems
 
 const recentlyViewed = [
     {
@@ -122,33 +68,7 @@ const recentlyViewed = [
 
 const Cart = () => {
     const navigate = useNavigate();
-    const [cartItems, setCartItems] = useState(initialCartItems);
-
-    const updateQty = (id, newQty) => {
-        setCartItems(items => items.map(item => 
-            item.id === id ? { ...item, qty: Number(newQty) } : item
-        ));
-    };
-
-    const removeItem = (id) => {
-        setCartItems(items => items.filter(item => item.id !== id));
-    };
-
-    const addToCart = (product) => {
-        const newItem = {
-            id: Date.now(),
-            title: product.title,
-            category: "Recently Added",
-            discountText: product.discountText,
-            originalPrice: product.originalPrice,
-            discountedPrice: product.discountedPrice,
-            offerText: "Standard Offer Applied",
-            qty: 1,
-            imgSrc: product.imgSrc
-        };
-        setCartItems(prev => [...prev, newItem]);
-        alert(`"${product.title}" was added to your cart!`);
-    };
+    const { cartItems, savedItems, updateQty, removeFromCart, addToCart, saveForLater, moveToCart, cartTotalCount } = useCart();
 
     // Calculate totals
     const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
@@ -160,32 +80,10 @@ const Cart = () => {
     const totalAmount = totalDiscountedPrice + platformFees;
 
     return (
-        <div className="cart-page">
-            <div className="header-bar">
-                <div className="logo">
-                    <Link to="/"><img src={m1} alt="Meesho Logo" /></Link>
-                </div>
-                
-                <div className="search-box">
-                    <input type="text" placeholder="Try Saree, Kurti or Search by Product Code" />
-                </div>
-
-                <nav className="navbar">
-                    <Link to="/">Home</Link>
-                    <Link to="/categories">Categories</Link>
-                    <Link to="/products">Products</Link>
-                    <Link to="/cart">Cart</Link>
-                    <Link to="/profile">Profile</Link>
-                </nav>
-            </div>
-
+        <MainLayout pageClass="cart-page" activeTab="cart" hideBottomNav>
             <div className="container">
                 <div className="flex">
                     <div className="col-left">
-                        <div className="card header flex-between">
-                            <p>Deliver to: <strong>Chennai - 600001</strong></p>
-                            <button className="btn btn-outline" style={{ width: 'auto', margin: 0 }}>Change</button>
-                        </div>
 
                         <div className="card">
                             {cartItems.map(item => (
@@ -208,14 +106,36 @@ const Cart = () => {
                                             <option value="5">Qty: 5</option>
                                         </select>
                                         <div className="actions">
-                                            <button className="btn">Save for later</button>
-                                            <button className="btn" onClick={() => removeItem(item.id)}>Remove</button>
+                                            <button className="btn btn-secondary" onClick={() => saveForLater(item.id)}>Save for later</button>
+                                            <button className="btn btn-secondary" onClick={() => removeFromCart(item.id)}>Remove</button>
                                         </div>
                                     </div>
                                 </div>
                             ))}
                             {cartItems.length === 0 && (
                                 <div style={{ padding: '20px', textAlign: 'center' }}>Your cart is empty.</div>
+                            )}
+
+                            {savedItems && savedItems.length > 0 && (
+                                <div style={{ marginTop: '30px' }}>
+                                    <h3 style={{ padding: '0 20px 10px', fontSize: '16px' }}>Saved For Later ({savedItems.length})</h3>
+                                    <hr />
+                                    {savedItems.map(item => (
+                                        <div className="cart-item" key={item.id}>
+                                            <img className="img-box" src={item.imgSrc} alt={item.title} />
+                                            <div className="info" style={{ width: '100%' }}>
+                                                <h3>{item.title}</h3>
+                                                <span className="text-sm">{item.category}</span>
+                                                <div>
+                                                    <span className="price">₹{item.discountedPrice.toLocaleString('en-IN')}</span>
+                                                </div>
+                                                <div className="actions" style={{ marginTop: '15px' }}>
+                                                    <button className="btn btn-secondary" onClick={() => moveToCart(item.id)}>Move to Cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             )}
                         </div>
                     </div>
@@ -234,7 +154,7 @@ const Cart = () => {
                             </p>
                         )}
                         <p className="text-sm">Safe & secure payments. 100% Authentic products.</p>
-                        <button className="btn-fill" onClick={() => navigate('/address')} disabled={cartItems.length === 0}>Place Order</button>
+                        <button className="btn btn-primary" onClick={() => navigate('/address')} disabled={cartItems.length === 0}>Place Order</button>
                     </div>
                 </div>
 
@@ -250,7 +170,12 @@ const Cart = () => {
                                         <span className="price">₹{item.discountedPrice.toLocaleString('en-IN')}</span> 
                                         <span className="strike">₹{item.originalPrice.toLocaleString('en-IN')}</span>
                                         <p className="text-green">{item.discountText}</p>
-                                        <button className="btn-outline" onClick={() => addToCart(item)}>Add to cart</button>
+                                        <button className="btn btn-outline" onClick={() => addToCart({
+                                            ...item,
+                                            price: item.discountedPrice,
+                                            image: item.imgSrc,
+                                            discount: parseInt(item.discountText) || 0
+                                        })}>Add to cart</button>
                                     </>
                                 ) : (
                                     <p style={{ color: 'red', marginTop: '10px', fontSize: '14px' }}>Currently unavailable</p>
@@ -260,7 +185,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </MainLayout>
     );
 };
 

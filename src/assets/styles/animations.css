@@ -1,0 +1,58 @@
+/* src/assets/styles/animations.css */
+
+/* Page Enter Animation */
+.page-enter {
+    animation: fadeSlideUp 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Skeleton Loading Animation */
+.skeleton {
+    background: #e0e0e0;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Hover Pulse (Can be used on specific call-to-actions) */
+@keyframes pulsePink {
+    0% { box-shadow: 0 0 0 0 rgba(244, 51, 151, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(244, 51, 151, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(244, 51, 151, 0); }
+}
+
+.pulse-hover:hover {
+    animation: pulsePink 1.5s infinite;
+}
+
+/* Cart Badge Pop */
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.cart-badge, .cart-badge-bottom {
+    animation: pop 0.3s ease-out;
+}

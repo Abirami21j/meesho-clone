@@ -1,394 +1,230 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
+import MainLayout from '@/layouts/MainLayout';
+import ProductList from '@/components/common/ProductList';
+import { DataContext } from '@/context/DataContext';
+
+import bataLogo from '@/assets/images/products/logo/bata logo jpg.jpg';
+import boatLogo from '@/assets/images/products/logo/boat logo.jpg';
+import himalayaLogo from '@/assets/images/products/logo/himalaya logo jpg.jpg';
+import lakmeLogo from '@/assets/images/products/logo/lakeme logo.jpg';
+import mamaearthLogo from '@/assets/images/products/logo/mamaearth logo .jpg';
+import miLogo from '@/assets/images/products/logo/mi logo .jpg';
+import niveaLogo from '@/assets/images/products/logo/nivea logo.jpg';
+import plumLogo from '@/assets/images/products/logo/plum logo.jpg';
+import vivoLogo from '@/assets/images/products/logo/vivo logo.jpg';
+import wildstoneLogo from '@/assets/images/products/logo/wild stone logo.jpg';
+import zionLogo from '@/assets/images/products/logo/zion logo.jpg';
+
+const topBrands = [
+    { name: "Bata", img: bataLogo },
+    { name: "Boat", img: boatLogo },
+    { name: "Himalaya", img: himalayaLogo },
+    { name: "Lakme", img: lakmeLogo },
+    { name: "Mamaearth", img: mamaearthLogo },
+    { name: "Mi", img: miLogo },
+    { name: "Nivea", img: niveaLogo },
+    { name: "Plum", img: plumLogo },
+    { name: "Vivo", img: vivoLogo },
+    { name: "Wild Stone", img: wildstoneLogo },
+    { name: "Zion", img: zionLogo }
+];
+
+import banner1 from '@/assets/images/products/logo/banners/ChatGPT Image Jul 30, 2026, 04_53_36 PM.png';
+import banner2 from '@/assets/images/products/logo/banners/diwali.png';
+import banner3 from '@/assets/images/products/logo/banners/independance.png';
+import banner4 from '@/assets/images/products/logo/banners/pongal.png';
+import banner5 from '@/assets/images/products/logo/banners/ramzan.png';
+import banner6 from '@/assets/images/products/logo/banners/ChatGPT Image Jul 30, 2026, 04_54_55 PM.png';
+
+const bannerImages = [
+    banner1,
+    banner2,
+    banner3,
+    banner4,
+    banner5,
+    banner6
+];
 
 const Home = () => {
+    const navigate = useNavigate();
+    const { allProducts, categories, loadingData } = useContext(DataContext);
+    
+    const featuredProducts = allProducts.filter(p => p.featured).slice(0, 10);
+    const newArrivals = allProducts.filter(p => p.newArrival && !p.featured).slice(0, 10);
+
+    const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
+
+    if (loadingData) {
+        return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#f4f6f8' }}>Loading Store...</div>;
+    }
+
     return (
-        <div className="Home-page">
-
-     
-    {/*  Header  */}
-    <header className="header">
-
-    <div className="logo">
-        <h2>meesho</h2>
-    </div>
-
-    <div className="search-box">
-        <input type="text" placeholder="Try Saree, Kurti or Search by Product Code" />
-    </div>
-
-    <nav className="navbar">
-        <a href="index.html">Home</a>
-        <a href="categories.html"> Categories
-</a>
-         <a href="product.html"> Products</a>
-        <a href="cart.html">Cart</a>
-        <a href="profile.html">Profile</a>
-
-    </nav>
-
-</header>
-
-    {/*  Categories  */}
-   <nav className="categories" id="categories">
-        <a href="#">Women Ethnic</a>
-        <a href="#">Women Western</a>
-        <a href="#">Men</a>
-        <a href="#">Kids</a>
-        <a href="#">Home & Kitchen</a>
-        <a href="#">Beauty</a>
-        <a href="#">Jewellery</a>
-        <a href="#">Electronics</a>
-    </nav>
-
-    {/*  Banner  */}
-   {/*  Main Meesho Banner  */}
-<section className="banner">
-    <img src="https://images.meesho.com/images/marketing/1782978181486.webp"
-         alt="Meesho Banner" />
-         <div className="offer-content">
-        <button id="shopBtn">Shop Now</button>
-    </div>
-</section>
-
-{/*  Features  */}
-<div className="features">
-    <span>🔄 7 Days Easy Return</span>
-    <span>💵 Cash on Delivery</span>
-    <span>🏷 Lowest Prices</span>
-</div>
-
-
-<section className="category-section">
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634654837.webp" alt="" />
-        <p>Ethnic Wear</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634725496.webp" alt="" />
-        <p>Western Dresses</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634780426.webp" alt="" />
-        <p>Menswear</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634814643.webp" alt="" />
-        <p>Footwear</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634835018.webp" alt="" />
-        <p>Home Decor</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634871107.webp" alt="" />
-        <p>Beauty</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634909968.webp" alt="" />
-        <p>Accessories</p>
-    </div>
-
-    <div className="category-card">
-        <img src="https://images.meesho.com/images/marketing/1744634937295.webp" alt="" />
-        <p>Grocery</p>
-    </div>
-
-</section>
-
-{/*  Auto Changing Offer Banner  */}
-<section className="offer-banner">
-
-    <img src="https://images.meesho.com/images/marketing/1744698265981.webp"
-         alt="Offer Banner" />
-         <div className="offer-content">
-        <button id="shopBtn">Shop Now</button>
-    </div>
-    
-
-</section>
-</section>
-
-    {/*  Features  */}
-    
-{/*  Shop By Category  */}
-
-    {/*  Shop Button  */}
-    
-
-<section id="products">
-
-<h2 className="product-title">
-    Products For You
-</h2>
-
- {/*  PRODUCTS SECTION  */}
-   {/*  PRODUCTS SECTION  */}
-<div className="products-container">
-
-
-
-{/*  Product Card  */}
-{/*  PRODUCTS SECTION  */}
-<div className="product-wrapper">
-
-{/*  CARD 1  */}
-<div className="product-card">
-    <img src="orange.webp" />
-    <h3>Rayon Women Kurti</h3>
-
-    <div className="price">₹465</div>
-    <div>
-        <span className="old-price">₹699</span>
-        <span className="discount">33% OFF</span>
-    </div>
-
-    <div className="rating">4.2 ★</div>
-    <div className="reviews">636 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-{/*  CARD 2  */}
-<div className="product-card">
-    <img src="red kurti.webp" />
-    <h3>Mahalaxmi Fashion Kurti</h3>
-
-    <div className="price">₹599</div>
-    <div>
-        <span className="old-price">₹899</span>
-        <span className="discount">33% OFF</span>
-    </div>
-
-    <div className="rating">4.3 ★</div>
-    <div className="reviews">897 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-{/*  CARD 3  */}
-<div className="product-card">
-    <img src="embroid.jpg" />
-    <h3>Lavender Anarkali Kurti</h3>
-
-    <div className="price">₹799</div>
-    <div>
-        <span className="old-price">₹1199</span>
-        <span className="discount">33% OFF</span>
-    </div>
-
-    <div className="rating">5.0 ★</div>
-    <div className="reviews">921 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-{/*  CARD 4  */}
-<div className="product-card">
-    <img src="green.jpg" />
-    <h3>Cotton A-Line Kurti</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-
-<div className="product-card">
-    <img src="https://images.meesho.com/images/products/646192388/gej0n_512.avif?width=360" />
-    <h3>White with black Kurti</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-{/*  Card-5  */}
-
-<div className="product-card">
-    <img src="https://images.meesho.com/images/products/860970950/ivzlb_512.avif?width=512" />
-    <h3>Black Net Kurti</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-{/*  card-6  */}
-
-<div className="product-card">
-    <img src="https://images.meesho.com/images/products/562869970/xrzdg_512.avif?width=512" />
-    <h3>Women net Kurti</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-{/*  card-7  */}
-<div className="product-card">
-    <img src="https://images.meesho.com/images/products/614177009/dkpvy_512.avif?width=512" />
-    <h3>Grey-Line Kurti</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-{/*  card-8  */}
-
-<div className="product-card">
-    <img src="https://images.meesho.com/images/products/415940733/9k8xe_512.avif?width=512" />
-    <h3>Purple Kurti</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-{/*  card-9  */}
-
-<div className="product-card">
-    <img src="https://images.meesho.com/images/products/683964653/ygghl_512.avif?width=512" />
-    <h3>Kurti with bottom</h3>
-
-    <div className="price">₹549</div>
-    <div>
-        <span className="old-price">₹799</span>
-        <span className="discount">31% OFF</span>
-    </div>
-
-    <div className="rating">4.5 ★</div>
-    <div className="reviews">1230 Reviews</div>
-
-    <button className="btn add">Add to Cart</button>
-    <button className="btn buy">Buy Now</button>
-</div>
-
-
-</div>
-<div className="viewMore">
-
-<button id="viewMore">
-    View More
-</button>
-
-</div>
-
-</section>
-{/*  Add this at the end of your webpage  */}
-<section className="about-section">
-  <div className="container">
-    <h2 className="about-title">More About MyStore</h2>
-    <hr className="divider" />
-
-    <h3>Discover a World of Affordable Products & Everyday Essentials</h3>
-    <p>
-      Upgrade your lifestyle with the latest trends and essentials at prices designed for everyday value. 
-      MyStore offers a vast selection of products across all categories, ensuring you find everything you need at prices suited for your budget.
-    </p>
-
-    <h3>Shop Millions of Products Across All Categories</h3>
-    <p>
-      From trendy fashion to essential homeware, MyStore is your one-stop shop for everything you need. 
-      Explore millions of products across a wide variety of categories for every occasion.
-    </p>
-
-    <h3>Latest Fashion Is Right Here</h3>
-    <h4>Western Wear</h4>
-    <p>
-      Looking to revamp your wardrobe? Find trendy dresses, casual jeans, and comfortable tops suitable for any occasion. 
-      Fresh styles added regularly so you stay on top of your fashion game.
-    </p>
-
-    <h4>Accessories & Footwear</h4>
-    <p>
-      Elevate your outfit with jewelry, handbags, belts, and footwear. 
-      Whether you're searching for statement earrings or comfortable sneakers, you'll find a wide selection to suit your style.
-    </p>
-  </div>
-</section>
-<footer className="bottom-nav">
-
-<a href="dashboard.html" className="nav-item active">
-🏠 Home
-</a>
-
-<a href="categories.html">
-📂 Categories
-</a>
-
-<a href="product.html">
-🛍 Products
-</a>
-
-<a href="cart.html">
-🛒 Cart
-</a>
-
-<a href="profile.html">
-👤 Profile
-</a>
-
-</footer>
-
-        </div>
+        <MainLayout pageClass="Home-page" activeTab="home">
+            {/*  Categories  */}
+            <nav className="categories" id="categories">
+                {categories.slice(0, 8).map(cat => (
+                    <Link key={cat.id} to={`/products?category=${cat.id}`}>{cat.name}</Link>
+                ))}
+            </nav>
+
+            {/*  Main Meesho Banner Carousel  */}
+            <section className="banner carousel-banner">
+                <Link to="/products" style={{ display: 'block', position: 'relative' }}>
+                    <img src={bannerImages[0]} alt="placeholder" style={{ visibility: 'hidden', width: '100%', height: 'auto', display: 'block' }} />
+                    {bannerImages.map((img, index) => (
+                        <img 
+                            key={index}
+                            src={img} 
+                            alt={`Meesho Banner ${index + 1}`} 
+                            className={`carousel-image ${index === currentBannerIndex ? 'active' : ''}`}
+                        />
+                    ))}
+                </Link>
+            </section>
+
+            {/*  Features  */}
+            <div className="features">
+                <div className="feature-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    <span>7 Days Easy Return</span>
+                </div>
+                <div className="divider-vertical"></div>
+                <div className="feature-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                        <circle cx="12" cy="12" r="2"></circle>
+                        <path d="M6 12h.01M18 12h.01"></path>
+                    </svg>
+                    <span>Cash on Delivery</span>
+                </div>
+                <div className="divider-vertical"></div>
+                <div className="feature-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                    </svg>
+                    <span>Lowest Prices</span>
+                </div>
+            </div>
+
+            <section className="category-section">
+                <h2 className="section-title">Top Categories to choose from</h2>
+                <div className="category-grid">
+                    {categories.slice(0, 8).map(cat => (
+                        <div className="category-card" key={cat.id} onClick={() => navigate(`/products?category=${cat.id}`)}>
+                            <div className="category-img-wrapper">
+                                <img src={cat.image} alt={cat.name} />
+                            </div>
+                            <p>{cat.name.split(' ')[0]}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Brands Marquee */}
+            <section className="overflow-hidden-section" style={{ margin: '60px auto', maxWidth: '1200px' }}>
+                <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '30px', justifyContent: 'center' }}>Top Brands</h2>
+                <div className="brands-marquee-wrapper">
+                    <div className="brands-marquee">
+                        {topBrands.map((brand, idx) => (
+                            <Link key={brand.name + idx} to={`/products?search=${encodeURIComponent(brand.name)}`} className="brand-card has-image">
+                                <img src={brand.img} alt={brand.name} className="brand-logo-img" />
+                            </Link>
+                        ))}
+                        {/* Duplicate for seamless looping */}
+                        {topBrands.map((brand, idx) => (
+                            <Link key={brand.name + '-dup-' + idx} to={`/products?search=${encodeURIComponent(brand.name)}`} className="brand-card has-image">
+                                <img src={brand.img} alt={brand.name} className="brand-logo-img" />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/*  Auto Changing Offer Banner  */}
+            <section className="offer-banner">
+                <img src="https://images.meesho.com/images/marketing/1744698265981.webp" alt="Offer Banner" />
+                <div className="offer-content">
+                    <button id="shopBtn" onClick={() => navigate('/products?category=women')}>Shop Now</button>
+                </div>
+            </section>
+
+            <section id="products">
+                <h2 className="product-title">Products For You</h2>
+                <ProductList products={featuredProducts} />
+                <div className="viewMore">
+                    <button id="viewMore" onClick={() => navigate('/products')}>View More</button>
+                </div>
+            </section>
+            
+            <section id="new-arrivals" style={{ marginTop: '40px' }}>
+                <h2 className="product-title">New Arrivals</h2>
+                <ProductList products={newArrivals} />
+                <div className="viewMore">
+                    <button id="viewMore" onClick={() => navigate('/products')}>View More</button>
+                </div>
+            </section>
+
+            <section className="about-section">
+                <div className="container">
+                    <div className="about-header">
+                        <h2>More About MyStore</h2>
+                        <p>Your one-stop destination for affordable fashion, lifestyle, and everyday essentials.</p>
+                    </div>
+
+                    <div className="about-grid">
+                        <div className="about-card">
+                            <div className="about-icon">🛍️</div>
+                            <h3>Affordable Products & Essentials</h3>
+                            <p>Upgrade your lifestyle with the latest trends and essentials at prices designed for everyday value. We offer a vast selection across all categories, ensuring you find everything you need within budget.</p>
+                        </div>
+
+                        <div className="about-card">
+                            <div className="about-icon">🌟</div>
+                            <h3>Shop Millions of Products</h3>
+                            <p>From trendy fashion to essential homeware, MyStore is your ultimate shopping hub. Explore millions of products across a wide variety of categories for every occasion, style, and need.</p>
+                        </div>
+
+                        <div className="about-card">
+                            <div className="about-icon">👗</div>
+                            <h3>Latest Western Wear</h3>
+                            <p>Looking to revamp your wardrobe? Find trendy dresses, casual jeans, and comfortable tops suitable for any occasion. Fresh styles are added regularly so you stay on top of your fashion game.</p>
+                        </div>
+
+                        <div className="about-card">
+                            <div className="about-icon">👠</div>
+                            <h3>Accessories & Footwear</h3>
+                            <p>Elevate your outfit with jewelry, handbags, belts, and footwear. Whether you're searching for statement earrings or comfortable sneakers, you'll find a wide selection to suit your unique style.</p>
+                        </div>
+
+                        <div className="about-card">
+                            <div className="about-icon">🔄</div>
+                            <h3>Easy Returns & Refunds</h3>
+                            <p>Shop with confidence using our hassle-free 7-day return policy. If you're not fully satisfied with your purchase, easily return it and get a full refund without any complicated questions.</p>
+                        </div>
+
+                        <div className="about-card">
+                            <div className="about-icon">🔒</div>
+                            <h3>100% Safe Payments</h3>
+                            <p>Your security is our priority. We support multiple secure payment options including UPI, Credit Cards, Net Banking, and Cash on Delivery for a seamless and safe checkout experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </MainLayout>
     );
 };
 

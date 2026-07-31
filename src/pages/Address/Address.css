@@ -1,32 +1,115 @@
-.address-page .header-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 5%; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100;}
+.address-page .header-bar { display: flex; align-items: center; justify-content: space-between; background: var(--card); padding: var(--spacing-16) 5%; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;}
 .address-page .logo img { height: 40px; }
-.address-page .steps { display: flex; gap: 30px; font-weight: 500; color: #878787; font-size: 14px; }
-.address-page .steps span.active { color: #f43397; border-bottom: 2px solid #f43397; padding-bottom: 18px; margin-bottom: -18px; }
-.address-page .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; display: flex; gap: 20px; align-items: flex-start; }
+.address-page .steps { display: flex; gap: var(--spacing-32); font-weight: 500; color: var(--text-light); font-size: 14px; }
+.address-page .steps span.active { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 18px; margin-bottom: -18px; }
+.address-page .container { max-width: 1000px; margin: var(--spacing-32) auto; padding: 0 var(--spacing-16); display: flex; gap: var(--spacing-24); align-items: flex-start; }
 .address-page .col-left { flex: 2; }
 .address-page .col-right { flex: 1; position: sticky; top: 90px; }
-.address-page .title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.address-page .title-row h2 { font-size: 18px; font-weight: bold; }
-.address-page .add-new { color: #f43397; font-weight: bold; font-size: 14px; text-decoration: none; cursor: pointer; }
-.address-page .address-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; margin-bottom: 15px; display: flex; gap: 15px; }
-.address-page .address-card.selected { background: #f4f4f5; border-color: #f4f4f5; }
-.address-page .address-card input[type="radio"] { accent-color: #f43397; width: 18px; height: 18px; cursor: pointer; margin-top: 2px;}
+.address-page .title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-16); }
+.address-page .title-row h2 { font-size: 18px; font-weight: bold; color: var(--text); }
+.address-page .add-new { color: var(--primary); font-weight: bold; font-size: 14px; text-decoration: none; cursor: pointer; }
+.address-page .address-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--spacing-24); margin-bottom: var(--spacing-16); display: flex; gap: var(--spacing-16); }
+.address-page .address-card.selected { background: #fdf2fa; border-color: var(--primary); }
+.address-page .address-card input[type="radio"] { accent-color: var(--primary); width: 18px; height: 18px; cursor: pointer; margin-top: 2px;}
 .address-page .address-info { flex: 1; }
-.address-page .name-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.address-page .name-row h3 { font-size: 16px; font-weight: bold; }
-.address-page .edit-btn { color: #f43397; font-size: 13px; font-weight: bold; text-transform: uppercase; cursor: pointer; border: none; background: none; }
-.address-page .address-text { font-size: 14px; color: #666; line-height: 1.5; margin-bottom: 10px; }
-.address-page .phone { font-size: 14px; color: #666; }
-.address-page .tag { background: #ffe4c4; color: #ed6c02; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 10px; margin-left: 10px; }
-.address-page .btn-deliver { background: #f43397; color: #fff; width: 100%; padding: 14px; font-size: 15px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; }
+.address-page .name-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-8); }
+.address-page .name-row h3 { font-size: 16px; font-weight: bold; color: var(--text); }
+.address-page .edit-btn { color: var(--primary); font-size: 13px; font-weight: bold; text-transform: uppercase; cursor: pointer; border: none; background: none; }
+.address-page .address-text { font-size: 14px; color: var(--text-light); line-height: 1.5; margin-bottom: var(--spacing-8); }
+.address-page .phone { font-size: 14px; color: var(--text-light); }
+.address-page .tag { background: #ffe4c4; color: #ed6c02; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 10px; margin-left: var(--spacing-16); }
+.address-page .btn-deliver { background: var(--primary); color: #fff; width: 100%; padding: var(--spacing-16); font-size: 15px; border-radius: var(--radius-sm); border: none; font-weight: bold; cursor: pointer; margin-top: var(--spacing-16); transition: var(--transition); }
 .address-page .btn-deliver:hover { background: #e02885; }
-.address-page .price-card { background: #fff; border: 1px solid #eaeaec; border-radius: 4px; padding: 20px; }
-.address-page .price-card h3 { font-size: 16px; margin-bottom: 15px; color: #333; }
-.address-page .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #666; }
-.address-page .row.total { font-weight: bold; font-size: 16px; color: #333; margin-top: 15px; border-top: 1px dashed #eaeaec; padding-top: 15px; }
-.address-page .text-green { color: #038d63; }
-.address-page .discount-badge { background: #e6f6f1; color: #038d63; padding: 10px; border-radius: 4px; font-size: 13px; font-weight: 500; text-align: center; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 5px;}
+.address-page .price-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--spacing-24); }
+.address-page .price-card h3 { font-size: 16px; margin-bottom: var(--spacing-16); color: var(--text); }
+.address-page .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: var(--text-light); }
+.address-page .row.total { font-weight: bold; font-size: 16px; color: var(--text); margin-top: var(--spacing-16); border-top: 1px dashed var(--border); padding-top: var(--spacing-16); }
+.address-page .text-green { color: var(--discount); }
+.address-page .discount-badge { background: #e6f6f1; color: var(--discount); padding: var(--spacing-8); border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-align: center; margin-top: var(--spacing-16); display: flex; justify-content: center; align-items: center; gap: 5px;}
 @media (max-width: 768px) {
     .address-page .container { flex-direction: column; }
     .address-page .col-left, .address-page .col-right { width: 100%; }
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content.address-modal {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-content.address-modal h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.modal-content.address-modal .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.modal-content.address-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.modal-content.address-modal input,
+.modal-content.address-modal textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.modal-content.address-modal input:focus,
+.modal-content.address-modal textarea:focus {
+    border-color: var(--primary);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }

@@ -1,113 +1,139 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Address.css';
-import m1 from '../../assets/images/m1.png';
+import CheckoutHeader from '@/components/common/CheckoutHeader';
+import { CheckoutContext } from '@/context/CheckoutContext';
 
 const Address = () => {
     const navigate = useNavigate();
-    const [selectedAddress, setSelectedAddress] = useState('jane');
+    const { 
+        addresses, 
+        selectedAddressId, 
+        setSelectedAddressId, 
+        addAddress, 
+        editAddress,
+        cartBaseTotal,
+        initialDiscounts,
+        getFinalTotal 
+    } = useContext(CheckoutContext);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMode, setModalMode] = useState('add'); // 'add' or 'edit'
+    const [editingId, setEditingId] = useState(null);
+    const [formData, setFormData] = useState({ name: '', address: '', phone: '' });
+
+    const openAddModal = () => {
+        setModalMode('add');
+        setFormData({ name: '', address: '', phone: '' });
+        setEditingId(null);
+        setIsModalOpen(true);
+    };
+
+    const openEditModal = (addr) => {
+        setModalMode('edit');
+        setFormData({ name: addr.name, address: addr.address, phone: addr.phone });
+        setEditingId(addr.id);
+        setIsModalOpen(true);
+    };
+
+    const handleFormChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        if (modalMode === 'add') {
+            addAddress(formData);
+        } else {
+            editAddress(editingId, formData);
+        }
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="address-page">
-            <div className="header-bar">
-                <div className="logo">
-                    <Link to="/"><img src={m1} alt="Meesho Logo" /></Link>
-                </div>
-                <div className="steps">
-                    <span>Cart</span>
-                    <span className="active">Address</span>
-                    <span>Payment</span>
-                    <span>Summary</span>
-                </div>
-            </div>
+            <CheckoutHeader activeStep="address" />
 
             <div className="container">
                 <div className="col-left">
                     <div className="title-row">
                         <h2>Select Delivery Address</h2>
-                        <span className="add-new" style={{ cursor: 'pointer' }}>+ ADD NEW ADDRESS</span>
+                        <span className="add-new" style={{ cursor: 'pointer' }} onClick={openAddModal}>+ ADD NEW ADDRESS</span>
                     </div>
 
-                    <div className={`address-card ${selectedAddress === 'john' ? 'selected' : ''}`}>
-                        <input 
-                            type="radio" 
-                            name="address" 
-                            checked={selectedAddress === 'john'} 
-                            onChange={() => setSelectedAddress('john')} 
-                        />
-                        <div className="address-info">
-                            <div className="name-row">
-                                <h3>John Doe</h3>
+                    {addresses.map((addr) => (
+                        <div key={addr.id} className={`address-card ${selectedAddressId === addr.id ? 'selected' : ''}`}>
+                            <input 
+                                type="radio" 
+                                name="address" 
+                                checked={selectedAddressId === addr.id} 
+                                onChange={() => setSelectedAddressId(addr.id)} 
+                            />
+                            <div className="address-info">
+                                <div className="name-row">
+                                    <h3>{addr.name} {!addr.isServiceable && <span className="tag">Unserviceable</span>}</h3>
+                                    <button className="edit-btn" onClick={() => openEditModal(addr)}>EDIT</button>
+                                </div>
+                                <p className="address-text">{addr.address}</p>
+                                <p className="phone">{addr.phone}</p>
+                                {selectedAddressId === addr.id && addr.isServiceable && (
+                                    <button className="btn btn-primary address-deliver-btn" onClick={() => navigate('/payment')}>
+                                        Deliver to this Address
+                                    </button>
+                                )}
                             </div>
-                            <p className="address-text">123 Demo Street, Near Test Park, Fake City, DL, 100001</p>
-                            <p className="phone">9876543210</p>
-                            {selectedAddress === 'john' && (
-                                <button className="btn-deliver" onClick={() => navigate('/payment')}>Deliver to this Address</button>
-                            )}
                         </div>
-                    </div>
-
-                    <div className={`address-card ${selectedAddress === 'jane' ? 'selected' : ''}`}>
-                        <input 
-                            type="radio" 
-                            name="address" 
-                            checked={selectedAddress === 'jane'} 
-                            onChange={() => setSelectedAddress('jane')} 
-                        />
-                        <div className="address-info">
-                            <div className="name-row">
-                                <h3>Jane Smith <span className="tag">Unserviceable</span></h3>
-                                <button className="edit-btn">EDIT</button>
-                            </div>
-                            <p className="address-text">456 Mockingbird Lane, Building B, Testville, TS, 200002</p>
-                            <p className="phone">9988776655</p>
-                            {selectedAddress === 'jane' && (
-                                <button className="btn-deliver" onClick={() => navigate('/payment')}>Deliver to this Address</button>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className={`address-card ${selectedAddress === 'alex' ? 'selected' : ''}`}>
-                        <input 
-                            type="radio" 
-                            name="address" 
-                            checked={selectedAddress === 'alex'} 
-                            onChange={() => setSelectedAddress('alex')} 
-                        />
-                        <div className="address-info">
-                            <div className="name-row">
-                                <h3>Alex Johnson</h3>
-                            </div>
-                            <p className="address-text">789 Placeholder Avenue, Example Town, EX, 300003</p>
-                            <p className="phone">9123456789</p>
-                            {selectedAddress === 'alex' && (
-                                <button className="btn-deliver" onClick={() => navigate('/payment')}>Deliver to this Address</button>
-                            )}
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
                 <div className="col-right">
                     <div className="price-card">
-                        <h3>Price Details (11 Items)</h3>
+                        <h3>Price Details</h3>
                         <div className="row">
                             <span>Product Price</span>
-                            <span>+ ₹3126</span>
+                            <span>+ ₹{cartBaseTotal}</span>
                         </div>
                         <div className="row text-green">
                             <span>Total Discounts</span>
-                            <span>- ₹124</span>
+                            <span>- ₹{initialDiscounts}</span>
                         </div>
                         <div className="row total">
                             <span>Order Total</span>
-                            <span>₹3002</span>
+                            <span>₹{getFinalTotal()}</span>
                         </div>
                         <div className="discount-badge">
-                            <span>%</span> Yay! Your total discount is ₹124
+                            <span>%</span> Yay! Your total discount is ₹{initialDiscounts}
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Address Modal */}
+            {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content address-modal">
+                        <h2>{modalMode === 'add' ? 'Add New Address' : 'Edit Address'}</h2>
+                        <form onSubmit={handleFormSubmit}>
+                            <div className="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" value={formData.name} onChange={handleFormChange} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone" value={formData.phone} onChange={handleFormChange} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Full Address</label>
+                                <textarea name="address" value={formData.address} onChange={handleFormChange} rows="3" required></textarea>
+                            </div>
+                            <div className="modal-actions">
+                                <button type="button" className="btn btn-outline" onClick={() => setIsModalOpen(false)}>Cancel</button>
+                                <button type="submit" className="btn btn-primary">Save Address</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -1,0 +1,106 @@
+/* src/components/common/Footer.css */
+.main-footer {
+    background-color: #f8f8f9;
+    padding: 60px 20px;
+    margin-top: 40px;
+    font-family: inherit;
+    border-top: 1px solid #eaeaec;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: 30px;
+}
+
+.footer-col h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.footer-col h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.brand-col .trusted {
+    font-size: 15px;
+    color: #666666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.app-badges {
+    display: flex;
+    gap: 15px;
+}
+
+.app-badge {
+    height: 40px;
+    cursor: pointer;
+}
+
+.links-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.links-col a {
+    text-decoration: none;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.links-col a:hover {
+    color: #df1995;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+    transform: translateY(-2px);
+}
+
+.contact-col p {
+    font-size: 11px;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.contact-col p:first-of-type {
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}

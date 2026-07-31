@@ -1,251 +1,234 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import MainLayout from '@/layouts/MainLayout';
+import ProductCard from '@/components/common/ProductCard';
+import { DataContext } from '@/context/DataContext';
+import offer80 from '@/assets/images/products/logo/offers/80percentage offer.png';
+import freeDelivery from '@/assets/images/products/logo/offers/free delivery image .png';
+import boatLogo from '@/assets/images/products/logo/boat logo.jpg';
+import lakmeLogo from '@/assets/images/products/logo/lakeme logo.jpg';
+import mamaearthLogo from '@/assets/images/products/logo/mamaearth logo .jpg';
+import himalayaLogo from '@/assets/images/products/logo/himalaya logo jpg.jpg';
+import bataLogo from '@/assets/images/products/logo/bata logo jpg.jpg';
+import miLogo from '@/assets/images/products/logo/mi logo .jpg';
+import niveaLogo from '@/assets/images/products/logo/nivea logo.jpg';
+import vivoLogo from '@/assets/images/products/logo/vivo logo.jpg';
+import plumLogo from '@/assets/images/products/logo/plum logo.jpg';
+import wildStoneLogo from '@/assets/images/products/logo/wild stone logo.jpg';
 import './Categories.css';
 
+import imgWomen from '@/assets/images/products/categorieslogo/women.png';
+import imgMen from '@/assets/images/products/categorieslogo/men.png';
+import imgKids from '@/assets/images/products/categorieslogo/kids.png';
+import imgBeauty from '@/assets/images/products/categorieslogo/beauty.png';
+import imgElectronics from '@/assets/images/products/categorieslogo/electronics.png';
+import imgHome from '@/assets/images/products/categorieslogo/Home.png';
+import imgGrocery from '@/assets/images/products/categorieslogo/grocery.png';
+import imgJewellery from '@/assets/images/products/categorieslogo/Jewellery.png';
+import imgFootwear from '@/assets/images/products/categorieslogo/Footwear.png';
+import imgBags from '@/assets/images/products/categorieslogo/Bags.png';
+import imgAccessories from '@/assets/images/products/categorieslogo/accessories.png';
+import imgBooks from '@/assets/images/products/categorieslogo/Books.png';
+import imgPets from '@/assets/images/products/categorieslogo/Pets.png';
+import imgAuto from '@/assets/images/products/categorieslogo/auto.png';
+import imgToys from '@/assets/images/products/categorieslogo/Toys.png';
+
 const Categories = () => {
+    const navigate = useNavigate();
+    const { allProducts, loadingData } = useContext(DataContext);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+        }
+    };
+
+    const mainCategories = [
+        { name: "Women", img: imgWomen, link: "women" },
+        { name: "Men", img: imgMen, link: "men" },
+        { name: "Kids", img: imgKids, link: "kids" },
+        { name: "Beauty", img: imgBeauty, link: "beauty" },
+        { name: "Electronics", img: imgElectronics, link: "electronics" },
+        { name: "Home", img: imgHome, link: "home-kitchen" },
+        { name: "Grocery", img: imgGrocery, link: "grocery" },
+        { name: "Jewellery", img: imgJewellery, link: "jewellery" },
+        { name: "Footwear", img: imgFootwear, link: "footwear" },
+        { name: "Bags", img: imgBags, link: "bags" },
+        { name: "Accessories", img: imgAccessories, link: "accessories" },
+        { name: "Books", img: imgBooks, link: "books" },
+        { name: "Pets", img: imgPets, link: "pets" },
+        { name: "Auto", img: imgAuto, link: "auto" },
+        { name: "Toys", img: imgToys, link: "toys" }
+    ];
+
+    const subCategories = {
+        Women: ["Sarees", "Kurtis", "Dresses", "Tops", "Jeans", "Leggings", "Ethnic Wear", "Nightwear", "Innerwear", "Handbags", "Jewellery", "Footwear"],
+        Men: ["Shirts", "T-Shirts", "Jeans", "Trousers", "Hoodies", "Jackets", "Watches", "Shoes", "Wallets", "Sunglasses"],
+        Kids: ["Baby Clothing", "Boys Wear", "Girls Wear", "School Bags", "Toys", "Baby Care", "Footwear"],
+        Beauty: ["Face Wash", "Makeup", "Lipstick", "Foundation", "Perfume", "Hair Care", "Skin Care", "Nail Polish"],
+        Electronics: ["Mobiles", "Earbuds", "Smart Watches", "Speakers", "Chargers", "Power Banks", "Laptop Accessories", "Smart Home"],
+        "Home & Kitchen": ["Bedsheets", "Curtains", "Cookware", "Storage", "Kitchen Tools", "Home Decor", "Lighting", "Furniture"]
+    };
+    
+    const priceBuckets = [
+        { label: "Under ₹199", query: "199" },
+        { label: "₹200–₹499", query: "499" },
+        { label: "₹500–₹999", query: "999" },
+        { label: "₹1000+", query: "1000plus" }
+    ];
+
+    const topBrands = [
+        { name: "Boat", img: boatLogo },
+        { name: "Lakme", img: lakmeLogo },
+        { name: "Mamaearth", img: mamaearthLogo },
+        { name: "Himalaya", img: himalayaLogo },
+        { name: "Bata", img: bataLogo },
+        { name: "Mi", img: miLogo },
+        { name: "Nivea", img: niveaLogo },
+        { name: "Vivo", img: vivoLogo },
+        { name: "Plum", img: plumLogo },
+        { name: "Wild Stone", img: wildStoneLogo }
+    ];
+
+    // Realistic data slices
+    const newArrivals = allProducts.filter(p => p.newArrival).slice(0, 4);
+    const bestSellers = allProducts.filter(p => p.bestSeller).slice(0, 4);
+    const trendingProducts = allProducts.filter(p => p.featured).slice(0, 6);
+
+    if (loadingData) {
+        return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#f4f6f8' }}>Loading Categories...</div>;
+    }
+
     return (
-        <div className="Categories-page">
-
-
-    {/*  Header  */}
-
-    <header>
-        
-
-        <div className="logo">
-            <h1>meesho</h1>
-        </div>
-
-        <div className="search-box">
-            <input type="text" placeholder="Try Saree, Kurti or Search by Product Code" />
-        </div>
-
-        <div className="menu">
-    <a href="index.html">Home</a>
-    <a href="product.html">Products</a>
-    <a href="cart.html">Cart</a>
-    <a href="profile.html">Profile</a>
-</div>
-
-    </header>
-
-
-    {/*  Banner  */}
-
-    <section className="banner">
-
-        <img src="images/banner.jpg" alt="Banner" />
-
-    </section>
-
-
-    {/*  Category Icons  */}
-
-    <section className="category-icons">
-
-        <div className="icon">
-            <img src="images/women.jpg" alt="Women" />
-            <p>Women</p>
-        </div>
-
-        <div className="icon">
-            <img src="images/men.jpg" alt="Men's Fashion" />
-            <p>Men</p>
-        </div>
-
-        <div className="icon">
-            <img src="images/kids.jpg" alt="Kids" />
-            <p>Kids</p>
-        </div>
-
-        <div className="icon">
-            <img src="images/beauty.jpg" alt="Beauty" />
-            <p>Beauty</p>
-        </div>
-
-        <div className="icon">
-            <img src="images/home.jpg" alt="Home & Kitchen" />
-            <p>Home</p>
-        </div>
-
-        <div className="icon">
-            <img src="images/electronics.jpg" alt="Electronics" />
-            <p>Electronics</p>
-        </div>
-
-    </section>
-
-
-
-    {/*  Shop by Categories  */}
-
-    <section className="categories">
-
-        <h2>Shop by Categories</h2>
-
-        <div className="cards">
-
-            <div className="card">
-
-                <img src="images/women.jpg" alt="Women's Fashion" />
-
-                <h3>Women's Fashion</h3>
-
-                <p>Sarees, Kurtis, Tops, Dresses & More</p>
-
-                <button>Explore</button>
-
-            </div>
-
-
-            <div className="card">
-
-                <img src="images/men.jpg" alt="Men's Fashion" />
-
-                <h3>Men's Fashion</h3>
-
-                <p>T-Shirts, Shirts, Jeans & Footwear</p>
-
-                <button>Explore</button>
-
-            </div>
-
-
-            <div className="card">
-
-                <img src="images/kids.jpg" alt="Kids" />
-
-                <h3>Kids Collection</h3>
-
-                <p>Clothing, Toys & Accessories</p>
-
-                <button>Explore</button>
-
-            </div>
-
-
-            <div className="card">
-
-                <img src="images/beauty.jpg" alt="Beauty" />
-
-                <h3>Beauty Products</h3>
-
-                <p>Skincare, Makeup & Hair Care</p>
-
-                <button>Explore</button>
-
-            </div>
-
-
-            <div className="card">
-
-                <img src="images/electronics.jpg" alt="Electronics" />
+        <MainLayout pageClass="Categories-page" activeTab="categories">
             
-                <h3>Electronics</h3>
-
-                <p>Mobiles, Headphones & Smart Gadgets</p>
-
-                <button>Explore</button>
-
+            {/* Search Bar */}
+            <div className="cat-search-container">
+                <form onSubmit={handleSearch} className="cat-search-form">
+                    <span className="search-icon">🔍</span>
+                    <input 
+                        type="text" 
+                        placeholder="Search Products..." 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </form>
             </div>
 
-
-            <div className="card">
-
-                <img src="images/home.jpg" alt="Home & Kitchen" />
-
-                <h3>Home & Kitchen</h3>
-
-                <p>Furniture, Decor & Kitchen Essentials</p>
-
-                <button>Explore</button>
-
+            {/* Banners */}
+            <div className="cat-banners">
+                <div className="cat-banner-item img-banner">
+                    <img src={offer80} alt="Up to 80% OFF" />
+                </div>
+                <div className="cat-banner-item img-banner">
+                    <img src={freeDelivery} alt="Free Delivery" />
+                </div>
             </div>
 
-        </div>
+            {/* Main Categories Grid */}
+            <section className="cat-section">
+                <h2 className="section-title">Categories</h2>
+                <div className="main-cat-grid">
+                    {mainCategories.map(cat => (
+                        <div key={cat.name} className="main-cat-item" onClick={() => navigate(`/products?category=${cat.link}`)}>
+                            <div className="cat-icon"><img src={cat.img} alt={cat.name} /></div>
+                            <span className="cat-name">{cat.name}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
-    </section>
+            {/* Sub Categories block */}
+            <section className="cat-section sub-cat-section">
+                {Object.entries(subCategories).map(([parentCat, subs]) => (
+                    <div key={parentCat} className="sub-cat-block">
+                        <h3 className="sub-cat-title">{parentCat}</h3>
+                        <div className="sub-cat-list">
+                            {subs.map(sub => (
+                                <Link key={sub} to={`/products?search=${encodeURIComponent(sub)}`} className="sub-cat-link">
+                                    {sub}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </section>
 
+            {/* Trending */}
+            <section className="cat-section">
+                <h2 className="section-title">🔥 Trending</h2>
+                <div className="horizontal-scroll">
+                    {trendingProducts.map(p => (
+                        <div className="trending-card-wrap" key={p.id}>
+                            <ProductCard {...p} image={p.images[0]} oldPrice={p.originalPrice} discount={`${p.discount}% OFF`} />
+                        </div>
+                    ))}
+                </div>
+            </section>
 
+            {/* Shop by Price */}
+            <section className="cat-section">
+                <h2 className="section-title">Shop by Price</h2>
+                <div className="price-grid">
+                    {priceBuckets.map(price => (
+                        <Link key={price.label} to={`/products?price=${price.query}`} className="price-card">
+                            {price.label}
+                        </Link>
+                    ))}
+                </div>
+            </section>
 
-    {/*  Offers  */}
+            {/* New Arrivals */}
+            <section className="cat-section">
+                <h2 className="section-title">New Arrivals</h2>
+                <div className="products-grid-preview">
+                    {newArrivals.map(p => (
+                        <ProductCard key={p.id} {...p} image={p.images[0]} oldPrice={p.originalPrice} discount={`${p.discount}% OFF`} />
+                    ))}
+                </div>
+            </section>
 
-    <section className="offer">
+            {/* Best Sellers */}
+            <section className="cat-section">
+                <h2 className="section-title">Best Sellers</h2>
+                <div className="products-grid-preview">
+                    {bestSellers.map(p => (
+                        <ProductCard key={p.id} {...p} image={p.images[0]} oldPrice={p.originalPrice} discount={`${p.discount}% OFF`} />
+                    ))}
+                </div>
+            </section>
 
-        <h2>Today's Best Deals</h2>
+            {/* Top Brands */}
+            <section className="cat-section overflow-hidden-section">
+                <h2 className="section-title">Top Brands</h2>
+                <div className="brands-marquee-wrapper">
+                    <div className="brands-marquee">
+                        {topBrands.map((brand, idx) => (
+                            <Link key={brand.name + idx} to={`/products?search=${encodeURIComponent(brand.name)}`} className="brand-card has-image">
+                                <img src={brand.img} alt={brand.name} className="brand-logo-img" />
+                            </Link>
+                        ))}
+                        {/* Duplicate for seamless looping */}
+                        {topBrands.map((brand, idx) => (
+                            <Link key={brand.name + '-dup-' + idx} to={`/products?search=${encodeURIComponent(brand.name)}`} className="brand-card has-image">
+                                <img src={brand.img} alt={brand.name} className="brand-logo-img" />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-        <div className="offer-box">
-
-            <div className="offer-card">
-                <h3>50% OFF</h3>
-                <p>Women's Collection</p>
+            {/* Category Footer */}
+            <div className="cat-footer-links">
+                <a href="#">Need Help?</a>
+                <a href="#">Contact Support</a>
+                <a href="#">FAQs</a>
+                <a href="#">Return Policy</a>
             </div>
 
-            <div className="offer-card">
-                <h3>40% OFF</h3>
-                <p>Men's Fashion</p>
-            </div>
-
-            <div className="offer-card">
-                <h3>60% OFF</h3>
-                <p>Home Essentials</p>
-            </div>
-
-            <div className="offer-card">
-                <h3>30% OFF</h3>
-                <p>Electronics</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    {/*  Footer  */}
-
-    <footer>
-
-        <h3>Meesho Clone</h3>
-
-        <p>Shop Smart | Shop Easy</p>
-
-        <p>© 2026 All Rights Reserved</p>
-
-    </footer>
-
-    {/*  Bottom Navigation  */}
-<div className="bottom-nav">
-
-    <a href="index.html" className="nav-item">
-        <span>🏠</span>
-        <p>Home</p>
-    </a>
-
-    <a href="category.html" className="nav-item active">
-        <span>📂</span>
-        <p>Categories</p>
-    </a>
-
-    <a href="product.html" className="nav-item">
-        <span>🛍️</span>
-        <p>Products</p>
-    </a>
-
-    <a href="cart.html" className="nav-item">
-        <span>🛒</span>
-        <p>Cart</p>
-    </a>
-
-    <a href="profile.html" className="nav-item">
-        <span>👤</span>
-        <p>Profile</p>
-    </a>
-
-</div>
-
-
-        </div>
+        </MainLayout>
     );
 };
 
