@@ -22,7 +22,7 @@ export default function SplashScreen({
   const members = [
     { name: "Jeevankumar M", short: "Jeevankumar M" },
     { name: "Abirami J", short: "Abirami J" },
-    { name: "Ruthiksha C", short: "Ruthiksha" },
+    { name: "Ruthiksha C", short: "Ruthiksha C" },
     { name: "Jamuna S", short: "Jamuna S" },
     { name: "Naren L", short: "Naren L" },
   ];
