@@ -128,19 +128,27 @@ export default function SplashScreen({
             width: '100%'
           }}
         >
-          <div style={{ marginBottom: '12px' }}>
-            <span style={{ opacity: 0.8 }}>Developed by</span><br/>
-            <strong style={{ fontSize: '1rem', color: '#fff', letterSpacing: '1px' }}>THE BUILDERS</strong><br/>
-            <span style={{ fontStyle: 'italic', color: '#f7941d', fontSize: '0.8rem' }}>✨ "Building Ideas. Delivering Innovation."</span>
+          <div style={{ marginBottom: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <span style={{ opacity: 0.8 }}>Developed by</span>
+            {settled && (
+              <AnimatedText 
+                text="THE BUILDERS" 
+                delay={0.8}
+                duration={0.1}
+                textClassName="text-[#f7941d] text-xl font-black tracking-widest mt-1 mb-1"
+                underlineGradient="from-transparent via-pink-400 to-transparent"
+              />
+            )}
+            <span style={{ fontStyle: 'italic', color: '#fff', fontSize: '0.8rem' }}>✨ "Building Ideas. Delivering Innovation."</span>
           </div>
 
-          <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', padding: '0 20px', fontSize: '0.7rem' }}>
+          <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', padding: '0 20px', fontSize: '0.8rem' }}>
             <strong style={{ opacity: 0.9 }}>Team Members:</strong>
-            <span>• Abirami J</span>
-            <span>• Jeevankumar M</span>
-            <span>• Ruthiksha C</span>
-            <span>• Jamuna S</span>
-            <span>• Naren L</span>
+            <span style={{ color: '#fff', fontWeight: 'bold', textShadow: '0 0 5px rgba(255,255,255,0.5)' }}>• Abirami J</span>
+            <span style={{ color: '#fff', fontWeight: 'bold', textShadow: '0 0 5px rgba(255,255,255,0.5)' }}>• Jeevankumar M</span>
+            <span style={{ color: '#fff', fontWeight: 'bold', textShadow: '0 0 5px rgba(255,255,255,0.5)' }}>• Ruthiksha C</span>
+            <span style={{ color: '#fff', fontWeight: 'bold', textShadow: '0 0 5px rgba(255,255,255,0.5)' }}>• Jamuna S</span>
+            <span style={{ color: '#fff', fontWeight: 'bold', textShadow: '0 0 5px rgba(255,255,255,0.5)' }}>• Naren L</span>
           </div>
 
           <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>
